@@ -1,4 +1,3 @@
-##### aimldl/python3/python_data_structures.md
 * Draft: 2020-01-13 (Mon)
 TODOs: Add frequently used data structure and summarize them in a single page.
 ## Python Data Structures
