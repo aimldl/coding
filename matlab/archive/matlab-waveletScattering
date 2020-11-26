@@ -1,0 +1,65 @@
+
+% m script 
+% waveletScattering, https://www.mathworks.com/help/wavelet/ref/waveletscattering.html
+
+
+sf = waveletScattering
+[filters, f] = filterbank(sf);
+plot(f, filters{2}.psift)
+title('First Filter Bank')
+xlabel('Cycles/Sample')
+ylabel('Magnitude')
+grid on
+figure
+plot(f, filters{3}.psift)
+title('Second Filter Bank')
+xlabel('Cycles/Sample')
+ylabel('Magnitude')
+grid on
+% Example 1.17. Fourier coefficients of the square wave
+
+T = 1/440;
+t = linspace(0, T, 100);
+y = zeros( size(t) );
+for n = 1:2:19
+    y = y + (4/(n*pi))*sin(2*pi*n*t/T);
+end
+plot(t,y)
+[lpsum,f] = littlewoodPaleySum(sf);
+figure
+plot(f,lpsum)
+legend('1st Filter Bank', '2nd Filter Bank')
+xlabel('Cycle/Sample')
+grid on
+load handel
+disp(['Data Sampling Frequency: ', num2str(Fs), ' Hz'])
+% Data Sampling Frequency: 8192 Hz
+sf = waveletScattering('SignalLength', numel(y), ...
+'SamplingFrequency', Fs,...
+'QualityFactors', [4 2 1])
+
+%sf = 
+%
+%  waveletScattering with properties:
+%
+%          SignalLength: 73113
+%       InvarianceScale: 4.4625
+%        QualityFactors: [4 2 1]
+%              Boundary: "periodic"
+%     SamplingFrequency: 8192
+%             Precision: "double"
+%    OversamplingFactor: 0
+[filters, f] = filterbank(sf);
+plot(f, filters{4}.psift)
+grid on
+title('Third Filter Bank')
+xlabel('Hertz')
+ylabel('magnitude')
+lpsum = littlewoodPaleySum(sf);
+figure
+plot(lpsum)
+grid on
+legend('1st Filter Bank', '2nd Filter Bank', '3rd Filter Bank')
+[S,U] = scatteringTransform(sf,y);
+figure
+scattergram(sf,U,'FilterBank',1)

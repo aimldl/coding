@@ -1,0 +1,162 @@
+R-03-model.R.txt
+
+~/speech-keras$ cat 03-model.R
+library(keras)
+library(dplyr)
+source("02-generator.R")
+
+df <- readRDS("data/df.rds") %>% sample_frac(1)
+id_train <- sample(nrow(df), size = 0.7*nrow(df))
+
+ds_train <- data_generator(df[id_train,], 32L)
+ds_test <- data_generator(df[-id_train,], 32, shuffle = FALSE)
+
+
+model <- keras_model_sequential()
+model %>%  
+  layer_conv_2d(input_shape = c(98, 257, 1), 
+                filters = 32, kernel_size = c(3,3), activation = 'relu') %>% 
+  layer_max_pooling_2d(pool_size = c(2, 2)) %>% 
+  layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = 'relu') %>% 
+  layer_max_pooling_2d(pool_size = c(2, 2)) %>% 
+  layer_conv_2d(filters = 128, kernel_size = c(3,3), activation = 'relu') %>% 
+  layer_max_pooling_2d(pool_size = c(2, 2)) %>% 
+  layer_conv_2d(filters = 256, kernel_size = c(3,3), activation = 'relu') %>% 
+  layer_max_pooling_2d(pool_size = c(2, 2)) %>% 
+  layer_dropout(rate = 0.25) %>% 
+  layer_flatten() %>% 
+  layer_dense(units = 128, activation = 'relu') %>% 
+  layer_dropout(rate = 0.5) %>% 
+  layer_dense(units = 30, activation = 'softmax')
+
+# Compile model
+model %>% compile(
+  loss = loss_categorical_crossentropy,
+  optimizer = optimizer_adadelta(),
+  metrics = c('accuracy')
+)
+
+###
+
+## 내용 실행
+df <- readRDS("data/df.rds") %>% sample_frac(1)
+
+sample_frac은 fraction만큼 rows의 샘플을 랜덤하게 뽑는 함수입니다.
+sample_frac(dataframe,0.1)이면 0.1의 fraction이므로 전체 dataframe의 10%만큼을 랜덤하게 뽑습니다.
+sample_frac(dataframe,1)이면 전체를 랜덤하게 뽑는다는 뜻입니다.
+그러므로 그냥 읽어들인 dataframe을 랜덤하게 섞는 것입니다.
+
+> df
+# A tibble: 64,721 x 3
+   fname                                                  class class_id
+   <chr>                                                  <chr>    <int>
+ 1 data/speech_commands_v0.01/on/46a153d8_nohash_3.wav    on          16
+ 2 data/speech_commands_v0.01/down/7211390b_nohash_2.wav  down         4
+ 3 data/speech_commands_v0.01/house/e2362167_nohash_0.wav house       10
+ 4 data/speech_commands_v0.01/no/c5570933_nohash_1.wav    no          14
+ 5 data/speech_commands_v0.01/nine/0a9f9af7_nohash_0.wav  nine        13
+ 6 data/speech_commands_v0.01/bed/47565088_nohash_2.wav   bed          0
+ 7 data/speech_commands_v0.01/stop/90804775_nohash_1.wav  stop        22
+ 8 data/speech_commands_v0.01/zero/5fadb538_nohash_2.wav  zero        29
+ 9 data/speech_commands_v0.01/seven/ad5aeec2_nohash_1.wav seven       19
+10 data/speech_commands_v0.01/wow/09ddc105_nohash_2.wav   wow         27
+# ... with 64,711 more rows
+> 
+
+> readRDS("data/df.rds")
+# A tibble: 64,721 x 3
+   fname                                                class class_id
+   <chr>                                                <chr>    <int>
+ 1 data/speech_commands_v0.01/bed/00176480_nohash_0.wav bed          0
+ 2 data/speech_commands_v0.01/bed/004ae714_nohash_0.wav bed          0
+ 3 data/speech_commands_v0.01/bed/004ae714_nohash_1.wav bed          0
+ 4 data/speech_commands_v0.01/bed/00f0204f_nohash_0.wav bed          0
+ 5 data/speech_commands_v0.01/bed/00f0204f_nohash_1.wav bed          0
+ 6 data/speech_commands_v0.01/bed/012c8314_nohash_0.wav bed          0
+ 7 data/speech_commands_v0.01/bed/012c8314_nohash_1.wav bed          0
+ 8 data/speech_commands_v0.01/bed/0132a06d_nohash_0.wav bed          0
+ 9 data/speech_commands_v0.01/bed/0135f3f2_nohash_0.wav bed          0
+10 data/speech_commands_v0.01/bed/0137b3f4_nohash_0.wav bed          0
+# ... with 64,711 more rows
+> 
+
+> readRDS("data/df.rds") %>% sample_frac(1)
+# A tibble: 64,721 x 3
+   fname                                                  class class_id
+   <chr>                                                  <chr>    <int>
+ 1 data/speech_commands_v0.01/cat/b43de700_nohash_0.wav   cat          2
+ 2 data/speech_commands_v0.01/off/36050ef3_nohash_4.wav   off         15
+ 3 data/speech_commands_v0.01/six/a331d9cb_nohash_0.wav   six         21
+ 4 data/speech_commands_v0.01/eight/62641b88_nohash_0.wav eight        5
+ 5 data/speech_commands_v0.01/dog/6aafb34f_nohash_0.wav   dog          3
+ 6 data/speech_commands_v0.01/two/b1426003_nohash_0.wav   two         25
+ 7 data/speech_commands_v0.01/cat/902258bb_nohash_0.wav   cat          2
+ 8 data/speech_commands_v0.01/left/3c165869_nohash_0.wav  left        11
+ 9 data/speech_commands_v0.01/eight/38d78313_nohash_0.wav eight        5
+10 data/speech_commands_v0.01/down/cd7f8c1b_nohash_2.wav  down         4
+# ... with 64,711 more rows
+> 
+
+
+> id_train <- sample(nrow(df), size = 0.7*nrow(df))
+엄청 많은 ID가 있음. 거의 랜덤하게 ID를 결정하는 것임.
+70%를 랜덤하게 뽑는다.
+
+> id_train
+...
+[45301] 48214  9739 47737 34992
+                                                      
+## 에러가 나는 라인을 찾음
+> ds_train <- data_generator(df[id_train,], 32L)
+Error in py_call_impl(callable, dots$args, dots$keywords) : 
+  TypeError: Expected binary or unicode string, got 19
+
+Detailed traceback: 
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/data/ops/dataset_ops.py", line 254, in from_tensor_slices
+    return TensorSliceDataset(tensors)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/data/ops/dataset_ops.py", line 1166, in __init__
+    for i, t in enumerate(nest.flatten(tensors))
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/data/ops/dataset_ops.py", line 1166, in <listcomp>
+    for i, t in enumerate(nest.flatten(tensors))
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/ops.py", line 998, in convert_to_tensor
+    as_ref=False)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/ops.py", line 1094, in internal_convert_to_tensor
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+  File "/usr/local/lib/python3.6/dist-packages/tensorflow/python/framework/constant_op.py", lin
+>
+
+문제의 라인
+ds <- tensor_slices_dataset(df)
+
+참고 문서: Package ‘tfdatasets’, https://cran.r-project.org/web/packages/tfdatasets/tfdatasets.pdf
+참고 문서: tensor_slices_dataset: Creates a dataset whose elements are slices of the given..., https://rdrr.io/github/rstudio/tfdatasets/man/tensor_slices_dataset.html
+tensor_slices_dataset
+  Arguments
+    A nested structure of tensors, each having the same size in the 0th dimension.
+  Value
+    A dataset
+
+참고 문서: tfdatasets/issues/print_errors.R, https://github.com/rstudio/tfdatasets/blob/master/issues/print_errors.R
+
+library(tfdatasets)
+library(reticulate)
+arr <- function(...) array(seq_len(prod(c(...))), c(...))
+
+X <- arr(50, 3, 3)
+
+x1 <- tfdatasets::tensor_slices_dataset(X)
+
+## tfdatasets와 tensor_slices_dataset의 예제
+> library(tfdatasets)
+> library(reticulate)
+> arr <- function(...) array(seq_len(prod(c(...))), c(...))
+> X <- arr(50, 3, 3)
+> x1 <- tfdatasets::tensor_slices_dataset(X)
+> x1 <- tensor_slices_dataset(X)
+> x1
+<TensorSliceDataset shapes: (3, 3), types: tf.int32>
+> 
+
+힌트: tensor_slices_dataset는 간단한 예제에서 error가 안 나온다.
+      그러면 입력 argument df가 잘 못된 것인가?
+

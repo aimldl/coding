@@ -1,0 +1,171 @@
+
+
+아마존 검색: wavelet
+검색 결과: 331 results for "wavelet"
+
+## Introductory Books
+A Primer on Wavelets and Their Scientific Applications" by Walker
+"Wavelets and Filter Banks" by Gilbert Strang and truong Nguyen
+
+Kindle버전이 있는 책만 발췌
+
+### A Wavelet Tour of Signal Processing: The Sparse Way 3rd Edition, Kindle Edition
+[레퍼런스 책으로 좋으나, 오래된 내용임]
+
+Print Length: 829 pages
+Publication Date: December 18, 2008
+
+Top Reviews:
+clr
+5.0 out of 5 starsA Wavelet Tour
+July 26, 2010
+Format: HardcoverVerified Purchase
+This is an advanced highly mathematical treatement of wavelets. Unlike Fourier transforms, wavelet decompositions of signals preserve both scale (the inverse of frequency) and position. The book presents an unusually thorough treatment of diverse practical wavelet applications. For readers familiar with MATLAB, all the examples in the book can be reproduced with MATLAB "workouts." The actively supported WAVELAB850 library containing the workouts and supporting utilities can be downloaded on the internet free. The author of the book Stephan Mallat was a key contributor to the development of wavelet theory. His style of presentation is demanding but worth the effort. The book is a nice complement to the more reader friendly text book "Wavelets and Filter Banks" by Gilbert Strang and truong Nguyen.
+
+Gerry Van Winkle
+2.0 out of 5 starsNot for introduction to subject
+July 12, 2010
+Format: HardcoverVerified Purchase
+I bought this book based on the author Mallat being a big name in the field of wavelets. I was trying to use it as self-study as an introduction to wavelets. The style of writing is like a stream of conscienceness. I'm guessing the book is meant as a reference for experts in the field. If you are looking for an introduction, this is not the book.
+
+Joel Kolstad
+4.0 out of 5 starsPretty encyclopedic these days
+September 3, 2009
+Format: HardcoverVine Customer Review of Free Product( What's this? )
+Mallat's 800 page tome here is a very encyclopedic coverage of contemporary wavelet techniques and tricks. It takes the form of a "traditional" textbook: While there are some very brief refreshers on linear algebra, calculus, and statistics in an appendix, make no mistake -- there's a lot of advanced mathematics in the book, beyond what many (probably even the majority) of engineers learn during their undergraduate years. Additionally, while there are plenty of good "homework" problems at the end of each chapter, no solutions are provided. This all has several implications:
+
+-- This isn't really the book you want for self-study if you aren't already familiar with wavelets. I'd suggest something like "A Primer on Wavelets and Their Scientific Applications" by Walker for that.
+-- It can be a fine book for a college class on wavelets. I suspect the best approach would be for an instructor to use his own notes, assign reading for reinforcement, and problems from the end of each chapter. The deal here is that, in many cases, making good use of the results doesn't always require a full understanding of the mathematical underpinnings of the subject, and an instructor can guide students around what matters if they just want to apply the results (most students) vs. obtaining a deeper understanding that could be used to conduct new research or whatever (the very occasional student).
+-- It is, of course, a fine reference for anyone already working in the field and familiar with the subject. Mallat is a pretty brilliant guy.
+
+Note that Google Books has a copy of the earlier 2nd edition on-line; this might be handy for some people.
+
+
+### Wavelet Methods for Time Series Analysis (Cambridge Series in Statistical and Probabilistic Mathematics Book 4) Kindle Edition
+by Donald B. Percival  (Author), Andrew T. Walden (Author)
+Print Length: 620 pages
+Publication Date: July 24, 2000
+
+[홈페이지도 있어서 좋고, Matlab도 가능함]
+
+Wavelet Methods for Time Series Analysis, http://faculty.washington.edu/dbp/wmtsa.html
+WMTSA Wavelet Toolkit for MATLAB, https://atmos.uw.edu/~wmtsa/
+
+
+#### Top Reviews
+Glenn Richards
+3.0 out of 5 starsAdvanced mathematics
+May 29, 2011
+Format: PaperbackVerified Purchase
+This textbook has the advantage of being exceedingly thorough and detailed. This, unfortunately, is also its main drawback. Professional mathematicians will probably enjoy the extended derivations. Applied statisticians, engineers and programmers, however, may find this book to be rather long-winded, and too complex for context. As a mathematical treatise, this work is unsurpassed. However, it is definitely not a user-friendly programming manual.
+
+Martin Goldberg
+4.0 out of 5 starsGreat book but poor typeface
+October 21, 2015
+Format: PaperbackVerified Purchase
+This book is a very thorough and informative introduction. Note that it is written as a textbook for a course, with exercises. My only criticism is that the typeface is awful, and if you are reading it on paper, buy a magnifier or fresnel sheet or else you may get a headache from the cramped tiny type. That said, if you want to understand wavelets instead of just blindly using a package, this book is useful.
+
+edward
+2.0 out of 5 starsPoor consistency in notation
+August 29, 2014
+Format: PaperbackVerified Purchase
+Took the course from Percival. The book is very scattered in its writing and the notations used is very loose so it takes a long time to fully understand the concepts if you purely base it from the text.
+
+Michael R. Chernick
+4.0 out of 5 starsintroduction to wavelets and its applications in time series
+February 15, 2008
+Format: Hardcover
+The purpose of this text is to introduce wavelet methodology targeted toward applications in time series analysis. Emphasis is placed on the discrete wavelet transform and other discrete wavelets. There are many analogies to the spectral analysis of time series that the authors make. The authors do not assume knowledge of Fourier analysis and cover the relevent theory in Chapter 2. Just as the frequency domain methods decompose the variance of a time series into frequency components so to do wavelets decompose the variance according to scales. The authors take great pains in demonstrating this with several wavelets including the DWT and MODWT. Fast transform methods exist for wavelets as well as for Fourier series and they are apparently even simpler and faster for wavelets.
+The text tries to be self-contained and the authors start out at a very elementary level. They emphasize applications and practical aspects of wavelets.
+
+Steve Uhlig
+5.0 out of 5 starsReference for time series analysts using wavelets
+December 17, 2002
+Format: Hardcover
+Few wavelet books offer such a deep insight into wavelet methods
+for time series analysts. It goes very deep within the applied
+side of wavelet analysis on real time series while not compromising
+the mathematical side. A lot of books and papers insist too much
+on the mathematical side of wavelets while this one provides just
+the right balance between rigor and practical insight. If your
+interest does not lie in maths but just in wavelets as a tool,
+stick to this one.
+As a bonus, it contains a lot of exercices along with answers
+at the end of the book...a very good textbook indeed...
+
+### Wavelets: A Concise Guide Kindle Edition
+by Amir-Homayoon Najmi
+
+[수학적인 에러가 너무 많아서 별로?]
+
+#### Top Reviews
+David Lurie
+2.0 out of 5 starsFull of embarrassing mathematical errors
+January 19, 2014
+Format: Paperback
+I'm only on page 22, and already I have a long laundry list of mathematical errors.
+
+The author can't decide on a notation for vectors in R^n. Are they row vectors? Column vectors? Do we use brackets or parentheses? Just pick one, for crying out loud.
+
+Another example: "Hilbert spaces generalize the familiar Euclidean three-dimensional space R^3.... For instance, an orthogonal projection from the tip of a standard three dimensional vector onto an arbitrary plane through the origin has its analog in Hilbert spaces in the form of an orthogonal projection onto a linear subspace...." First of all, what the heck is the "tip" of a vector and how to you project from it? And what is the definition of projection of a vector onto a plane in R^3 if not exactly the definition given as the "analog" in Hilbert spaces?
+
+The book gives a definition for a bounded linear operator, then inexplicably gives a different (though equivalent) definition for a bounded linear functional, which is a type of linear operator. Why not use the same definition that was already given? Why confuse matters by giving extra definitions for special cases when the original definition works just as well? To top it off, on the very next page we are given yet a third definition, this time for what it means for the point evaluation functional to be bounded. At this point the reader now has three (!!) definitions for a bounded point evaluation functional. I just don't even...
+
+The author states that the integral notation will always refer to the Lebesgue integral but then uses the integral notation for inner product of distributions at the first possible chance without any explanation. This notation is actually standard, but it's nonsense without explanation, particularly when the text explicitly states that the notation means something different.
+
+While many of my complaints above are arguably aesthetic, there are several serious mathematical problems with the text. Theorems are stated without proof, which may be fine for such a text, but some of the supplied proofs are a complete mess. One proof of an equivalence omits one of the directions. The author seems to not understand L_2 equivalence classes of functions. The most disturbing mathematical defect is the author's use of the word basis. Apparently the author does not know what a basis is, which is inexcusable given the subject. For example, the author states (incorrectly) that the complex exponentials are a basis (!!) for L_2(R). In fact, the complex exponentials are clearly not even members of L_2(R). (The difference between Schauder and Hamel bases is not mentioned.) These errors are embarrassing.
+
+I think the reason I am so frustrated by these deficiencies is that the text would otherwise be fantastic. It would have been SO EASY for the author to have gotten these things right, and if he had, he would have written a beautiful text.
+
+
+### Discrete Wavelet Transform: A Signal Processing Approach 1st Edition, Kindle Edition
+by D. Sundararajan  (Author)
+Print Length: 316 pages
+Publisher: Wiley; 1 edition (August 3, 2015)
+Publication Date: August 3, 2015
+
+Amazon Customer
+5.0 out of 5 starsReview of "Discrete Wavelet Transform, a signal processing approach" by D. Sandararajan.
+August 8, 2016
+Format: HardcoverVerified Purchase
+The book has simplified for me several DSP and wavelet theory concepts that I had previously considered intricate. It certainly met my expectations. I recommend it as a first course in DWT.
+Nuha A. S. Alwan.
+
+### Discrete Fourier and Wavelet Transforms:An Introduction through Linear Algebra with Applications to Signal Processing Kindle Edition
+by Roe W Goodman (Author)
+
+Print Length: 300 pages
+Publication Date: February 18, 2016
+
+[리뷰가 없음]
+
+## 킨들 버전이 없는 책
+### Digital Signal Processing Using MATLAB & Wavelets 2nd Edition
+by Michael Weeks  (Author)
+
+#### Top Reviews
+Morsi
+5.0 out of 5 starsvery Lucid explanations
+September 21, 2014
+Format: HardcoverVerified Purchase
+one of very few books on the subject that has this excellent pedagogical approach.
+the wavelets are also introduced without painful mathematics, very well done.
+compine this book with DSP primer from Ken steiglitz and you will be solidly founded.
+highly recommended for any body seeks to learn DSP basics with matlab.
+
+Srikumar Sandeep
+3.0 out of 5 starsExtremely basic : Good only for beginners
+July 27, 2009
+Format: HardcoverVerified Purchase
+If you know something about MATLAB and DSP, you will not learn anything from this book.
+It is very elementary. The title should be have been "DSP using MATLAB for dummies"!
+It is only useful for the people who are just beginning to learn MATLAB/DSP
+
+### Linear Algebra, Signal Processing, and Wavelets - A Unified Approach: MATLAB Version (Springer Undergraduate Texts in Mathematics and Technology) 1st ed. 2019 Edition
+by Øyvind Ryan (Author)
+
+Hardcover: 360 pages
+Publisher: Springer; 1st ed. 2019 edition (March 6, 2019)
+
+#### 책의 PDF 버전이 있다!
+https://www.uio.no/studier/emner/matnat/math/nedlagte-emner/MAT-INF2360/v16/kompendiet/applinalgmatlab.pdf

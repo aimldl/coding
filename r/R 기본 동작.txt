@@ -1,0 +1,261 @@
+R 기본 동작.txt
+
+참고 문서: R the programming language for statisticians, http://xgenecode.com/wp/2017/11/15/install-run-r-script-linux-ubuntu/?i=1
+
+### Hello, world
+> hello <- "Hello, world!"
+> hello
+[1] "Hello, world!"
+> 
+
+### 
+$ cat hello_world.r 
+"Hello, world!"
+"Average of an an array"
+x <-c(1:9)
+x
+mean(x)
+
+$ Rscript hello_world.r 
+[1] "Hello, world!"
+[1] "Average of an an array"
+[1] 1 2 3 4 5 6 7 8 9
+[1] 5
+
+
+## R object, objects, workspace를 저장/로딩 하기
+구글 검색: R .rds
+참고 문서: Rds and RData (Rda) files, https://riptutorial.com/r/example/3650/rds-and-rdata--rda--files
+
+
+saveRDS(df, "data/df.rds")
+
+$ ls
+df.rds
+
+.rds는 R objects를 저장하는 R의 포맷입니다.저장과 로딩은 각각 saveRDS/readRDS으로 다음처럼 합니다.
+
+saveRDS(object = iris, file = "my_data_frame.rds")
+iris2 <- readRDS(file = "my_data_frame.rds")
+
+다수의 R objects를 저장하려면 save/load를 써서 .Rdata에 저장합니다.
+
+save(iris, cars, file = "myIrisAndCarsData.Rdata")
+load("myIrisAndCarsData.Rdata")
+
+참고 문서: Saving Data into R Data Format: RDS and RDATA, http://www.sthda.com/english/wiki/saving-data-into-r-data-format-rds-and-rdata
+
+전체 workspace를 저장하려면 save.image()/load를 써서 .Rdata에 저장합니다.
+
+save.image(file = "my_work_space.RData")
+load("my_work_space.RData")
+
+What is a .RDS file?
+They are widely used by R itself, for example to store metadata for a package and to store the help.search databases: the ".rds" file extension is most often used. ... Compression is handled by the connection opened when file is a file name, so is only possible when file is a connection if handled by the connection.
+readRDS function | R Documentation
+https://www.rdocumentation.org/packages/base/versions/3.5.2/topics/readRDS
+
+What is RDA file in R?
+What is an RDA file? File created by older versions of R, a statistical analysis and graphing program; saves the statistical objects (functions, values) created by the user at the R prompt while the program is open; used as the older extension for R, which now uses the .RDATA extension.
+RDA File Extension - What is an .rda file and how do I open it?
+https://fileinfo.com/extension/rda
+
+How do you save a file in R?
+Answer: Yes command in the R session be saved through the file menu. For this click File and then save history. A dialog box will appear, browse to the folder where you want to save the file (that will contain R commands in a session) and provide the file name of your own choice.Dec 13, 2015
+Save and Load R workspace (object) Archives - R Frequently Asked ...
+rfaqs.com/tag/save-and-load-r-workspace-object
+
+구글 검색: R how to define a function
+
+What is an R object?
+In this article, you'll be introduced to all three classes (S3, S4 and reference class) in R programming. We can do object oriented programming in R. In fact, everything in R is an object. An object is a data structure having some attributes and methods which act on its attributes. Class is a blueprint for the object.
+R OOP (Objects and Classes Introduction)
+https://www.datamentor.io/r-programming/object-class-introduction/
+
+참고 문서: R - Functions, https://www.tutorialspoint.com/r/r_functions.htm
+
+Function Definition
+function_name <- function(arg_1, arg_2, ...) {
+   Function body 
+}
+
+Built-in Function
+# Create a sequence of numbers from 32 to 44.
+print(seq(32,44))
+[1] 32 33 34 35 36 37 38 39 40 41 42 43 44
+
+# Find mean of numbers from 25 to 82.
+print(mean(25:82))
+[1] 53.5
+
+# Find sum of numbers frm 41 to 68.
+print(sum(41:68))
+[1] 1526
+
+User-defined Function
+# Create a function to print squares of numbers in sequence.
+new.function <- function(a) {
+   for(i in 1:a) {
+      b <- i^2
+      print(b)
+   }
+}	
+
+Calling a Function
+# Call the function new.function supplying 6 as an argument.
+new.function(6)
+[1] 1
+[1] 4
+[1] 9
+[1] 16
+[1] 25
+[1] 36
+
+Calling a Function without an Argument
+# Create a function without an argument.
+new.function <- function() {
+   for(i in 1:5) {
+      print(i^2)
+   }
+}	
+
+# Call the function without supplying an argument.
+new.function()
+[1] 1
+[1] 4
+[1] 9
+[1] 16
+[1] 25
+
+Calling a Function with Argument Values (by position and by name)
+new.function <- function(a,b,c) {
+   result <- a * b + c
+   print(result)
+}
+
+# Call the function by position of arguments.
+new.function(5,3,11)
+[1] 26
+
+# Call the function by names of the arguments.
+new.function(a = 11, b = 5, c = 3)
+[1] 58
+
+Calling a Function with Default Argument
+new.function <- function(a = 3, b = 6) {
+   result <- a * b
+   print(result)
+}
+
+# Call the function without giving any argument.
+new.function()
+[1] 18
+
+# Call the function with giving new values of the argument.
+new.function(9,5)
+[1] 45
+
+
+구글 검색: R "%>%" and "<-"
+참고 문서: Pipes in R Tutorial For Beginners, https://www.datacamp.com/community/tutorials/pipe-r-tutorial
+
+A nested code to compute x
+# Initialize `x`
+x <- c(0.109, 0.359, 0.63, 0.996, 0.515, 0.142, 0.017, 0.829, 0.907)
+round(exp(diff(log(x))), 1)
+
+can be avoided by using a pipe %>%
+# Import `magrittr`
+library(magrittr)
+
+# Perform the same computations on `x` as above
+x %>% log() %>%
+    diff() %>%
+    exp() %>%
+    round(1)
+
+To use a pipe, magrittr is necessary.
+magrittr is a part of dplyr since 2014.
+
+Additional Pipes other than %>%
+%<>%	The compound assignment operator
+%T>%	The tee operator
+%$%	The exposition pipe operator
+
+How to Use Pipes in R
+f(x)		x %>% f
+f(x, y) 	x %>% f(y)
+f(x, y)		y %>% f(x, .)	# Argument Placeholder
+e.g.
+round(pi, 6)	pi %>% round(6)
+
+h(g(f(x)))	x %>% f %>% g %>% h
+
+Argument Placeholder
+f(x, y)		y %>% f(x, .)
+f(y, z = x)	x %>% f(y, z = .)
+
+구글 검색: r $ operator (=> Wrong keyword!)
+참고 문서: R Operators, https://www.datamentor.io/r-programming/operator/
+Type of operators in R
+Arithmetic operators
+Relational operators
+Logical operators
+Assignment operators
+
+구글 검색: what does $ means in r
+참고 문서: What does $ mean in R?, https://www.quora.com/What-does-mean-in-R-1
+‘$’ refers to a specific column relative to a specific data frame.
+hello$World is the same as hello[, 1].
+
+구글 검색: R data frame
+참고 문서: R - Data Frames, https://www.tutorialspoint.com/r/r_data_frames.htm
+
+구글 검색: sample_frac
+참고 문서: R, Python 분석과 프로그래밍 (by R Friend), https://rfriend.tistory.com/tag/sample_frac%28%29%20%ED%95%A8%EC%88%98
+
+구글 검색: R dataset_map
+참고 문서: R interface to TensorFlow Dataset API, https://cran.r-project.org/web/packages/tfdatasets/vignettes/introduction.html
+
+
+주의: 이 R환경은 도커 컨테이너에 만들었습니다. 그러므로 그냥 쉘에서는 안 보입니다.
+aimldl@GPU-Desktop:~$ ll
+합계 240
+drwxr-xr-x 26 aimldl aimldl  4096  4월 18 13:48 ./
+drwxr-xr-x  3 root   root    4096  3월  4 16:29 ../
+-rw-------  1 aimldl aimldl  3718  4월 11 15:27 .ICEauthority
+drwx------  3 aimldl aimldl  4096  3월  4 19:26 .adobe/
+drwxr-x---  2 aimldl aimldl  4096  4월 15 10:51 .android/
+drwxrwxr-x  4 aimldl aimldl  4096  4월 17 19:09 .audacity-data/
+drwxrwxr-x  3 aimldl aimldl  4096  3월 18 18:15 .aws/
+-rw-------  1 aimldl aimldl 19345  4월 18 14:14 .bash_history
+-rw-r--r--  1 aimldl aimldl   220  3월  4 16:29 .bash_logout
+-rw-r--r--  1 aimldl aimldl  3796  4월 18 13:48 .bashrc
+drwx------ 21 aimldl aimldl  4096  4월 17 19:09 .cache/
+drwx------ 24 aimldl aimldl  4096  4월 17 19:09 .config/
+drwxrwx---  2 aimldl aimldl  4096  3월  4 17:57 .docker/
+drwx------  7 aimldl aimldl  4096  4월 11 15:29 .dropbox/
+drwxr-xr-x  3 aimldl aimldl  4096  4월  4 05:46 .dropbox-dist/
+drwx------  3 aimldl aimldl  4096  4월 17 21:50 .gnome/
+drwx------  3 aimldl aimldl  4096  3월  5 14:26 .gnupg/
+drwxr-xr-x  2 aimldl aimldl  4096  4월 16 16:54 .gphoto/
+drwxr-xr-x  5 aimldl aimldl  4096  4월 17 13:56 .ipython/
+drwx------  7 aimldl aimldl  4096  4월 17 18:07 .local/
+drwx------  5 aimldl aimldl  4096  3월  4 17:19 .mozilla/
+drwx------  4 aimldl aimldl  4096  3월 14 15:22 .nv/
+drwx------  3 aimldl aimldl  4096  3월  4 17:17 .pki/
+-rw-r--r--  1 aimldl aimldl   807  3월  4 16:29 .profile
+-rw-------  1 aimldl aimldl   569  4월 17 10:41 .python_history
+drwx------  2 aimldl aimldl  4096  3월 18 17:01 .ssh/
+-rw-r--r--  1 aimldl aimldl     0  3월  4 17:15 .sudo_as_admin_successful
+drwxrwxr-x  3 aimldl aimldl  4096  3월  5 14:26 .vscode/
+-rw-r--r--  1 aimldl aimldl   170  3월  4 19:04 .wget-hsts
+-rw-r--r--  1 aimldl aimldl 88044  4월 15 14:40 05_07_06.wav
+drwxr-xr-x  2 aimldl aimldl  4096  4월 18 18:10 Downloads/
+drwx------  7 aimldl aimldl  4096  4월  1 15:38 Dropbox/
+drwxrwxr-x  3 aimldl aimldl  4096  4월  1 15:36 cpp/
+drwxr-xr-x  3 aimldl aimldl  4096  4월 11 15:31 snap/
+drwxrwxr-x  3 aimldl aimldl  4096  4월 17 13:47 speech_corpus/
+
+
+

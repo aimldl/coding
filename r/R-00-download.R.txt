@@ -1,0 +1,38 @@
+R-00-download.R.txt
+
+speech-keras/data/speech_commands_v0.01$ tree -d
+.
+├── _background_noise_
+├── bed
+├── bird
+├── cat
+├── dog
+├── down
+├── eight
+├── five
+├── four
+├── go
+├── happy
+├── house
+├── left
+├── marvin
+├── nine
+├── no
+├── off
+├── on
+├── one
+├── right
+├── seven
+├── sheila
+├── six
+├── stop
+├── three
+├── tree
+├── two
+├── up
+├── wow
+├── yes
+└── zero
+
+
+

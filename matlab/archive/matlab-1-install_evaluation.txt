@@ -1,0 +1,327 @@
+
+
+라이센스 이슈가 있다. 어제 MathWorks Expo 2019에서 우연히 만났던 백두산 박사님께 KT에서 써본 적이 있는지 물어봤다.
+Matlab을 써보려고 했는데, 보안 검토 등을 위한 커미티가 구성이 되고, 몇 단계의 검증 과정을 거쳐야 한다고 했다.
+"그래서 하셨어요?" "아니요" "어렵게 만들면 안 하게 되죠."
+결국 백박사님도 못 쓰신다고...
+
+Computational Finance
+Control Systems
+Image Processing and Computer Vision
+Signal Processing and Communications
+Computational Biology
+Data Analytics
+
+
+
+신호 처리 및 통신
+
+오디오 및 음성 처리, 신호 시각화, 시간 및 주파수 분석, 신호 데이터 분석과 같은 신호 프로세싱 및 응용프로그램을 알아보십시오.
+
+제품:
+
+    MATLAB
+    Simulink
+    Communications Toolbox
+    Data Acquisition Toolbox
+    DSP System Toolbox
+    Instrument Control Toolbox
+    Signal Processing Toolbox
+
+
+데이터 애널리틱스
+
+데이터 피팅 및 동적 시스템 모델링 및 제어를 구현함으로써 분석을 수행하고 데이터를 통해 통찰력을 얻으실 수 있습니다. 최적의 결과값을 찾고 예측 모델을 개발하십시오.
+
+제품:
+
+    MATLAB
+    Curve Fitting Toolbox
+    Database Toolbox
+    Global Optimization Toolbox
+    Deep Learning Toolbox
+    Optimization Toolbox
+    Parallel Computing Toolbox
+    Statistics and Machine Learning Toolbox
+    Symbolic Math Toolbox
+
+
+계산 금융
+
+정량적 응용프로그램을 개발하고 시장 데이터를 모델링하여 성능을 최적화하고 위험을 최소화합니다. 모델을 데이터 소스와 통합하고 응용프로그램을 배포할 수 있습니다.
+
+제품:
+
+    MATLAB
+    Curve Fitting Toolbox
+    Database Toolbox
+    Datafeed Toolbox
+    Econometrics Toolbox
+    Financial Instruments Toolbox
+    Financial Toolbox
+    Global Optimization Toolbox
+    Optimization Toolbox
+    Parallel Computing Toolbox
+    Spreadsheet Link
+    Statistics and Machine Learning Toolbox
+    Symbolic Math Toolbox
+
+
+이미지 프로세싱 및 컴퓨터 비전
+
+그래픽 툴을 사용하여 이미지와 비디오를 시각화하고 조작하십시오. 참조로 제공되는 표준 알고리즘 라이브러리를 사용하여 하드웨어에 연결하고 새로운 아이디어를 개발하십시오.
+
+제품:
+
+    MATLAB
+    Computer Vision Toolbox
+    Image Acquisition Toolbox
+    Image Processing Toolbox
+    Parallel Computing Toolbox
+    Signal Processing Toolbox
+    Statistics and Machine Learning Toolbox
+
+
+
+제어 시스템
+
+사용자 지정 알고리즘을 개발하고 구현 전에 설계 일관성을 테스트하며 코드를 자동으로 배포함으로써 제어 설계를 모델링, 검증 및 확인합니다.
+
+제품:
+
+    MATLAB
+    Simulink
+    Control System Toolbox
+    Signal Processing Toolbox
+    Simulink Control Design
+    Stateflow
+    System Identification Toolbox
+
+
+
+계산 생명공학
+
+데이터 분석과 수학적 모델링을 통해 생물학적 현상을 이해 및 예측할 수 있습니다. 데이터 가져오기 및 모델링, 각 작업 단계별 워크플로우 자동화, 연구를 위한 알고리즘 및 툴 사용자 지정이 가능합니다.
+
+제품:
+
+    MATLAB
+    Bioinformatics Toolbox
+    Curve Fitting Toolbox
+    Global Optimization Toolbox
+    Image Processing Toolbox
+    Instrument Control Toolbox
+    Optimization Toolbox
+    Parallel Computing Toolbox
+    Signal Processing Toolbox
+    SimBiology
+    Statistics and Machine Learning Toolbox
+
+/usr/local/MATLAB/R2019a
+/usr/local/bin/
+
+구글 검색: ubuntu matlab
+참고 문서: How to install MATLAB on Ubuntu 18.04 Bionic Beaver Linux, https://linuxconfig.org/how-to-install-matlab-on-ubuntu-18-04-bionic-beaver-linux
+
+aimldl@GPU-Desktop
+$ cd ~/Downloads/Matlab/matlab_R2019a_glnxa64
+$ ls
+VersionInfo.xml  bin      install_guide.pdf    license_agreement.txt  sys
+activate.ini     help     installer_input.txt  patents.txt            trademarks.txt
+archives         install  java                 readme.txt             ui
+aimldl@GPU-Desktop:~/Downloads/Matlab/matlab_R2019a_glnxa64$ sudo ./install
+Preparing installation files ...
+Installing ...
+Finished
+
+문제: 설치 후 matlab을 실행 할 수가 없다.
+힌트: 실행파일을 찾아서 직접 run한다.
+
+/usr/share/applications$ matlab
+matlab: 명령을 찾을 수 없습니다
+/usr/share/applications$ which matlab
+$
+$ cd /
+/$ sudo find . -name "matlab"
+./home/aimldl/.local/lib/python3.6/site-packages/scipy/io/matlab
+./home/aimldl/Dropbox/today/growth-learning/lessons-2018/2018-09-17~19_VGG-16/VGG-16_lab/2.Oxford_VGG/practical-cnn-2017a/matconvnet/matlab
+./home/aimldl/Dropbox/today/growth-learning/lessons-2018/2018-09-17~19_VGG-16/VGG-16_lab/2.Oxford_VGG/practical-cnn-reg-2016a/matconvnet/matlab
+./home/aimldl/Dropbox/today/growth-learning/lessons-2018/2018-09-17~19_VGG-16/VGG-16_lab/3.HUFS_KT_lecture/vgg-16/vlfeat/doc/matlab
+./home/aimldl/Dropbox/today/growth-learning/lessons-2018/2018-09-17~19_VGG-16/VGG-16_lab/3.HUFS_KT_lecture/vgg-16/vlfeat/doc/build/matlab
+./home/aimldl/Dropbox/today/growth-learning/lessons-2018/2018-09-17~19_VGG-16/VGG-16_lab/3.HUFS_KT_lecture/vgg-16/matconvnet/matlab
+./home/aimldl/Dropbox/today/growth-learning/lessons-2018/2018-09-17~19_VGG-16/VGG-16_lab/3.HUFS_KT_lecture/practical/doc/matconvnet/matlab
+./home/aimldl/Dropbox/today/growth-learning/lessons-2018/2018-09-17~19_VGG-16/VGG-16_lab/3.HUFS_KT_lecture/practical/matconvnet/matlab
+./usr/local/MATLAB/R2019a/extern/engines/python/dist/matlab
+./usr/local/MATLAB/R2019a/appdata/files/matlab
+./usr/local/MATLAB/R2019a/appdata/components/matlab
+./usr/local/MATLAB/R2019a/sys/g11n/ja_JP/matlab
+./usr/local/MATLAB/R2019a/sys/g11n/ko_KR/matlab
+./usr/local/MATLAB/R2019a/sys/g11n/zh_CN/matlab
+./usr/local/MATLAB/R2019a/resources/coreui/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab/datatools/variableeditor/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab/datatools/peermodel_mcos/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab/datatools/editorconverters/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab/datatools/datatoolsservices/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab/datatools/inspector/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab/datatools/importtool/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab/datatools/workspacebrowser/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab/datatools/plotstab/matlab
+./usr/local/MATLAB/R2019a/toolbox/matlab/addon_enable_disable_management/matlab
+./usr/local/MATLAB/R2019a/toolbox/nnet/nnresource/nnet6/icon/general/matlab
+./usr/local/MATLAB/R2019a/toolbox/shared/dsp/vision/matlab
+./usr/local/MATLAB/R2019a/toolbox/eml/lib/matlab
+./usr/local/MATLAB/R2019a/examples/matlab
+./usr/local/MATLAB/R2019a/java/jar/ja_JP/matlab
+./usr/local/MATLAB/R2019a/java/jar/ko_KR/matlab
+./usr/local/MATLAB/R2019a/java/jar/zh_CN/matlab
+./usr/local/MATLAB/R2019a/java/jar/toolbox/matlab
+./usr/local/MATLAB/R2019a/bin/matlab
+./usr/local/MATLAB/R2019a/bin/glnxa64/builtins/matlab
+./usr/local/MATLAB/R2019a/help/matlab
+./usr/local/MATLAB/R2019a/help/pdf_doc/matlab
+./usr/local/MATLAB/R2019a/help/examples/matlab
+./var/lib/docker/overlay2/a4f0bbcf10d6324e77eded854d0c8d4bf5e16ed2e7376a3e596320cb1e280619/diff/home/user/.virtualenvs/r-tensorflow/lib/python3.6/site-packages/scipy/io/matlab
+./var/lib/docker/overlay2/6a3daa8bccc16a62757c6051bb2751f98c3a813863fb866d045895218fa0a343/diff/usr/local/lib/python3.6/dist-packages/scipy/io/matlab
+./var/lib/docker/overlay2/86f6a60038f5df12ee4ffa6f1f65f07951d7ae5fd0edc4a50cdc4739f80aca5c/diff/home/user/.virtualenvs/r-tensorflow/lib/python3.6/site-packages/scipy/io/matlab
+./var/lib/docker/overlay2/7a6ad548c00de42127822cfca7ca29aa92200caa2bb5d11db3344f3aa2fc1367/merged/usr/local/lib/python3.6/dist-packages/scipy/io/matlab
+./var/lib/docker/overlay2/202357b2d53d52f26ae89c9ddeaa2b6ce46abd5880ee8b39cf7bfc5abb8ac23b/diff/home/user/.virtualenvs/r-tensorflow/lib/python3.6/site-packages/scipy/io/matlab
+./var/lib/docker/overlay2/202357b2d53d52f26ae89c9ddeaa2b6ce46abd5880ee8b39cf7bfc5abb8ac23b/merged/home/user/.virtualenvs/r-tensorflow/lib/python3.6/site-packages/scipy/io/matlab
+./var/lib/docker/overlay2/202357b2d53d52f26ae89c9ddeaa2b6ce46abd5880ee8b39cf7bfc5abb8ac23b/merged/usr/local/lib/python3.6/dist-packages/scipy/io/matlab
+find: ‘./run/user/1000/gvfs’: 허가 거부
+/$ 
+
+./usr/local/MATLAB/R2019a/bin/matlab
+
+
+해결:
+1차적인 해결. 이렇게 하면 실행 가능함.
+$ cd /usr/local/MATLAB/R2019a/bin
+$ matlab
+matlab: 명령을 찾을 수 없습니다
+/usr/local/MATLAB/R2019a/bin$ ./matlab
+Gtk-Message: 11:10:17.481: Failed to load module "canberra-gtk-module"
+
+영구적인 문제 해결
+PATH 설정을 해준다.
+
+$ cd
+~$ sudo nano .bashrc
+[sudo] user_id의 암호: 
+$ bash
+$ matlab
+Gtk-Message: 11:17:42.310: Failed to load module "canberra-gtk-module"
+
+.bashrc의 수정
+
+# matlab
+PATH=$PATH:/usr/local/MATLAB/R2019a/bin/
+
+
+### Icon 설정하기
+$ sudo wget -qO /usr/share/icons/matlab.png goo.gl/NDyi9t 
+[sudo] user_id의 암호: 
+$ sudo wget -qO /usr/share/applications/matlab.desktop goo.gl/NaHXrn
+$ cd /usr/share/icons/
+/usr/share/icons$ ls
+Adwaita    HighContrast   LoginIcons    gnome      locolor     ubuntu-mono-dark
+DMZ-Black  Humanity       communitheme  handhelds  matlab.png  ubuntu-mono-light
+DMZ-White  Humanity-Dark  default       hicolor    redglass    whiteglass
+aimldl@GPU-Desktop:/usr/share/icons$ cd /usr/share/applications/
+/usr/share/applications$ ls matlab.desktop 
+matlab.desktop
+/usr/share/applications$ sudo nano matlab.desktop 
+
+
+->문제: 한글이 깨져서 안 보임.
+
+구글 검색: 우분투 matlab 한글깨짐
+참고 문서: ubuntu 12.04 MATLAB 2012a 문제해결, https://forum.ubuntu-kr.org/viewtopic.php?t=25116
+[도움이 안 됨]
+
+Preference 창 열기
+>> preferences
+preferences, https://www.mathworks.com/help/matlab/ref/preferences.html#f8-618762_seealso
+
+fonts 선택하기
+Figure 바로 밑ㅁㅁ이 폰트임.
+
+
+
+/usr/local/MATLAB/R2019a/sys/java/jre/glnxa64/jre/lib$ sudo nano fontconfig.properties.src.old 
+
+#
+# Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
+#
+
+# Version
+
+version=1
+
+# Component Font Mappings
+
+
+serif.plain.latin-1=-b&h-lucidabright-medium-r-normal--*-%d-*-*-p-*-iso8859-1
+serif.bold.latin-1=-b&h-lucidabright-demibold-r-normal--*-%d-*-*-p-*-iso8859-1
+serif.italic.latin-1=-b&h-lucidabright-medium-i-normal--*-%d-*-*-p-*-iso8859-1
+serif.bolditalic.latin-1=-b&h-lucidabright-demibold-i-normal--*-%d-*-*-p-*-iso8859-1
+
+sansserif.plain.latin-1=-b&h-lucidasans-medium-r-normal-sans-*-%d-*-*-p-*-iso8859-1
+sansserif.bold.latin-1=-b&h-lucidasans-bold-r-normal-sans-*-%d-*-*-p-*-iso8859-1
+sansserif.italic.latin-1=-b&h-lucidasans-medium-i-normal-sans-*-%d-*-*-p-*-iso8859-1
+sansserif.bolditalic.latin-1=-b&h-lucidasans-bold-i-normal-sans-*-%d-*-*-p-*-iso8859-1
+
+monospaced.plain.latin-1=-b&h-lucidatypewriter-medium-r-normal-sans-*-%d-*-*-m-*-iso8859-1
+monospaced.bold.latin-1=-b&h-lucidatypewriter-bold-r-normal-sans-*-%d-*-*-m-*-iso8859-1
+monospaced.italic.latin-1=-b&h-lucidatypewriter-medium-i-normal-sans-*-%d-*-*-m-*-iso8859-1
+monospaced.bolditalic.latin-1=-b&h-lucidatypewriter-bold-i-normal-sans-*-%d-*-*-m-*-iso8859-1
+
+dialog.plain.latin-1=-b&h-lucidasans-medium-r-normal-sans-*-%d-*-*-p-*-iso8859-1
+dialog.bold.latin-1=-b&h-lucidasans-bold-r-normal-sans-*-%d-*-*-p-*-iso8859-1
+dialog.italic.latin-1=-b&h-lucidasans-medium-i-normal-sans-*-%d-*-*-p-*-iso8859-1
+dialog.bolditalic.latin-1=-b&h-lucidasans-bold-i-normal-sans-*-%d-*-*-p-*-iso8859-1
+
+dialoginput.plain.latin-1=-b&h-lucidatypewriter-medium-r-normal-sans-*-%d-*-*-m-*-iso8859-1
+dialoginput.bold.latin-1=-b&h-lucidatypewriter-bold-r-normal-sans-*-%d-*-*-m-*-iso8859-1
+dialoginput.italic.latin-1=-b&h-lucidatypewriter-medium-i-normal-sans-*-%d-*-*-m-*-iso8859-1
+dialoginput.bolditalic.latin-1=-b&h-lucidatypewriter-bold-i-normal-sans-*-%d-*-*-m-*-iso8859-1
+
+# Search Sequences
+
+sequence.allfonts=latin-1
+
+# Exclusion Ranges
+
+# Font File Names
+
+/usr/local/MATLAB/R2019a/sys/java/jre/glnxa64/jre/lib$ sudo nano fontconfig.properties.src
+
+
+
+참고 문서: 매틀랩 2011b 한글 깨짐 문제, https://www.mathworks.com/matlabcentral/answers/269518-2011b
+내용 발췌: 한글이 깨지는 사항은 Linux에서 codeset setting이 다르게 설정되어 있어서 발생할 수 있습니다. 아래 명령어로 리눅스에서 로케일을 변경해 보시기 바랍니다. setenv LANG en_US.ISO8859-1
+로케일 이름은 운영체제에 맞춰 사용해 주시기 바랍니다.
+
+설치된 Matlab의 한글이 깨지는 문제는 리눅스의 로케일 설정하는 문제라는 것을 알 수가 있다.
+사실 Matlab 외에도 Notepad++를 설치했을 때도, 똑같이 문자가 깨져서 ㅁ가 나타나는 것을 볼 수 있었다.
+
+힌트: 문제가 한글 로케일 설정하는 문제로 변경됨.
+참고 문서: Ubuntu Locale 한글로 바꾸기, https://beomi.github.io/2017/07/10/Ubuntu-Locale-to-ko_KR/
+[이건 특별이 도움이 안 됐음]
+
+
+
+참고 문서: 우분투 설치 후 설정, https://hiseon.me/2018/04/08/ubuntu-initial-setup/
+참고 문서: 우분투 18.04 ToDO-기본설정, https://logon.tistory.com/729
+
+정확한 해결방법은 모르겠으나, 아래 방법을 실시하다 보니 해결됨.
+$ sudo apt-get install -y language-selector-gnome gnome-system-tools gnome-tweaks gnome-shell-extensions net-tools
+$ sudo apt install -y fonts-nanum fonts-naver-d2coding
+$ sudo fc-cache -vf
+
+이제 잘 동작함.
+
+wavelet toolbox를 설치하기 위해서...
+$ sudo ./matlab을 하면 설치 가능함.
+
+

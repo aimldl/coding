@@ -1,0 +1,340 @@
+R-Running tensorflow with R.txt
+
+> library(tfdatasets)
+> sess <-tf$Session()
+2019-04-19 15:53:12.681852: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2019-04-19 15:53:12.701119: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 4200000000 Hz
+2019-04-19 15:53:12.701692: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x5596fde12a70 executing computations on platform Host. Devices:
+2019-04-19 15:53:12.701727: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+>
+
+
+(r-tensorflow) user@b62128106f1a:~$ python3
+Python 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+(r-tensorflow) user@b62128106f1a:~$ python
+Python 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+
+(r-tensorflow) user@b62128106f1a:~$ python 
+Python 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow as tf
+>>> import numpy as np
+>>> exit()
+
+구글 검색: Running tensorflow with R
+참고 문서: R interface to Keras, https://tensorflow.rstudio.com/keras/
+INSTALLATION
+  devtools::install_github("rstudio/keras")
+
+  > devtools::install_github("rstudio/keras")
+  Error in loadNamespace(name) : there is no package called 'devtools'
+
+
+구글 검색: Error in loadNamespace(name) : there is no package called 'devtools'
+참고 문서: Cannot install devtools package after upgrading R, https://stackoverflow.com/questions/31291690/cannot-install-devtools-package-after-upgrading-r
+
+> library('devtools')
+Error in library("devtools") : there is no package called 'devtools'
+> install.packages('devtools')
+Installing package into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+Warning in install.packages("devtools") :
+  'lib = "/usr/local/lib/R/site-library"' is not writable
+Would you like to use a personal library instead?  (y/n) n
+Error in install.packages("devtools") : unable to install packages
+> 
+> q() 
+Save workspace image? [y/n/c]: n
+(r-tensorflow) user@b62128106f1a:~$ sudo R
+> install.packages('devtools')
+
+동작 안 함.
+
+구글 검색: Error in library("devtools") : there is no package called 'devtools'
+참고 문서: Problems installing the devtools package, https://stackoverflow.com/questions/20923209/problems-installing-the-devtools-package
+
+$ sudo apt-get install libcurl4-openssl-dev libssl-dev
+$ sudo R
+> install.packages('devtools')
+...
+* DONE (devtools)
+
+The downloaded source packages are in
+	'/tmp/Rtmpe183md/downloaded_packages'
+> 
+
+설치 확인
+> library('devtools')
+>
+동작!!!
+
+Kera 설치로 돌아가서...
+> devtools::install_github("rstudio/keras")
+...
+* DONE (keras)
+Warning message:
+In is.na(remote_deps$package) :
+  is.na() applied to non-(list or vector) of type 'NULL'
+> 
+
+> library(keras)
+> install_keras()
+
+LEARNING KERAS
+MNIST Example
+PREPARING THE DATA
+
+> mnist
+
+ [9937] 8 2 6 0 6 5 3 3 3 9 1 4 0 6 1 0 0 6 2 1 1 7 7 8 4 6 0 7 0 3 6 8 7 1 5 2
+ [9973] 4 9 4 3 6 4 1 7 2 6 5 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6
+
+> summary(mnist)
+      Length Class  Mode
+train 2      -none- list
+test  2      -none- list
+> length(mnist)
+[1] 2
+> nrow(mnist)
+NULL
+> dim(mnist)   
+NULL
+
+> summary(mnist$train)
+  Length   Class  Mode   
+x 47040000 -none- numeric
+y    60000 -none- numeric
+> summary(mnist$train$x)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00    0.00    0.00   33.32    0.00  255.00 
+> summary(mnist$train$y)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   2.000   4.000   4.454   7.000   9.000 
+> summary(mnist$test$x)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00    0.00    0.00   33.79    0.00  255.00 
+> summary(mnist$test$y)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   2.000   4.000   4.443   7.000   9.000 
+> 
+The x data is a 3-d array (images,width,height) of grayscale values .
+
+library(keras)
+mnist <- dataset_mnist()
+x_train <- mnist$train$x
+y_train <- mnist$train$y
+x_test <- mnist$test$x
+y_test <- mnist$test$y
+
+# reshape
+x_train <- array_reshape(x_train, c(nrow(x_train), 784))
+
+> nrow(x_train)
+[1] 60000
+> c(nrow(x_train), 784 )
+[1] 60000   784
+
+> summary( x_train )
+
+      V779                V780             V781        V782        V783  
+ Min.   :  0.00000   Min.   : 0.000   Min.   :0   Min.   :0   Min.   :0  
+ 1st Qu.:  0.00000   1st Qu.: 0.000   1st Qu.:0   1st Qu.:0   1st Qu.:0  
+ Median :  0.00000   Median : 0.000   Median :0   Median :0   Median :0  
+ Mean   :  0.01512   Mean   : 0.002   Mean   :0   Mean   :0   Mean   :0  
+ 3rd Qu.:  0.00000   3rd Qu.: 0.000   3rd Qu.:0   3rd Qu.:0   3rd Qu.:0  
+ Max.   :254.00000   Max.   :62.000   Max.   :0   Max.   :0   Max.   :0  
+      V784  
+ Min.   :0  
+ 1st Qu.:0  
+ Median :0  
+ Mean   :0  
+ 3rd Qu.:0  
+ Max.   :0  
+> 
+
+> nrow(x_test)                                              
+[1] 10000
+> c(nrow(x_test), 784 )
+[1] 10000   784
+
+x_test <- array_reshape(x_test, c(nrow(x_test), 784))
+# rescale
+x_train <- x_train / 255
+x_test <- x_test / 255
+
+y_train <- to_categorical(y_train, 10)
+y_test <- to_categorical(y_test, 10)
+
+ [9998,]    0    0    0    0    0    0    1    0    0     0
+ [9999,]    0    0    0    0    0    0    0    0    0     1
+ [ reached getOption("max.print") -- omitted 50001 rows ]
+
+model <- keras_model_sequential() 
+model %>% 
+  layer_dense(units = 256, activation = 'relu', input_shape = c(784)) %>% 
+  layer_dropout(rate = 0.4) %>% 
+  layer_dense(units = 128, activation = 'relu') %>%
+  layer_dropout(rate = 0.3) %>%
+  layer_dense(units = 10, activation = 'softmax')
+
+> summary( model)
+________________________________________________________________________________
+Layer (type)                        Output Shape                    Param #     
+================================================================================
+dense (Dense)                       (None, 256)                     200960      
+________________________________________________________________________________
+dropout (Dropout)                   (None, 256)                     0           
+________________________________________________________________________________
+dense_1 (Dense)                     (None, 128)                     32896       
+________________________________________________________________________________
+dropout_1 (Dropout)                 (None, 128)                     0           
+________________________________________________________________________________
+dense_2 (Dense)                     (None, 10)                      1290        
+================================================================================
+Total params: 235,146
+Trainable params: 235,146
+Non-trainable params: 0
+________________________________________________________________________________
+> 
+
+model %>% compile(
+  loss = 'categorical_crossentropy',
+  optimizer = optimizer_rmsprop(),
+  metrics = c('accuracy')
+)
+
+history <- model %>% fit(
+  x_train, y_train, 
+  epochs = 30, batch_size = 128, 
+  validation_split = 0.2
+)
+
+plot(history)
+도커에서 실행해서 그런지 안 보임. Shell로 나가서 보면 pdf파일이 생김.
+(r-tensorflow) user@b62128106f1a:~$ ls
+Rplots.pdf  bin/  downloads/  lib/  simple_audio_classification/  speech-keras/  uploads/
+(r-tensorflow) user@b62128106f1a:~$ 
+
+임시로...
+$ sudo gdebi AdbeRdr9.5.5-1_i386linux_enu.deb
+Reading package lists... Done
+Building dependency tree        
+Reading state information... Done
+This package is uninstallable
+Wrong architecture 'i386' -- Run dpkg --add-architecture to add it and update afterwards
+$ 
+
+model %>% evaluate(x_test, y_test)
+model %>% predict_classes(x_test)
+
+## Tutorials
+Basic Classification 
+Text Classification
+Basic Regression
+Overfitting and Underfitting
+Save and Restore Models
+
+### Basic Classification, https://tensorflow.rstudio.com/keras/articles/tutorial_basic_classification.html
+
+> library(keras)
+> fashion_mnist <- dataset_fashion_mnist()
+Error in py_call_impl(callable, dots$args, dots$keywords) : 
+  PermissionError: [Errno 13] Permission denied: '/home/user/.keras/datasets/fashion-mnist'
+
+Detailed traceback: 
+  File "/home/user/.virtualenvs/r-tensorflow/lib/python3.6/site-packages/tensorflow/python/keras/datasets/fashion_mnist.py", line 52, in load_data
+    paths.append(get_file(fname, origin=base + fname, cache_subdir=dirname))
+  File "/home/user/.virtualenvs/r-tensorflow/lib/python3.6/site-packages/tensorflow/python/keras/utils/data_utils.py", line 208, in get_file
+    os.makedirs(datadir)
+  File "/usr/lib/python3.6/os.py", line 220, in makedirs
+    mkdir(name, mode)
+> 
+
+$ sudo R로 실행하니 괜찮음
+> fashion_mnist <- dataset_fashion_mnist()
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-labels-idx1-ubyte.gz
+32768/29515 [=================================] - 0s 2us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-images-idx3-ubyte.gz
+26427392/26421880 [==============================] - 2s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-labels-idx1-ubyte.gz
+8192/5148 [===============================================] - 0s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-images-idx3-ubyte.gz
+4423680/4422102 [==============================] - 0s 0us/step
+> 
+
+> summary(fashion_mnist)
+      Length Class  Mode
+train 2      -none- list
+test  2      -none- list
+> summary(fashion_mnist$train)
+  Length   Class  Mode   
+x 47040000 -none- numeric
+y    60000 -none- numeric
+> summary(fashion_mnist$test)
+  Length  Class  Mode   
+x 7840000 -none- numeric
+y   10000 -none- numeric
+> train_images
+
+ [3567,]     0     0     0     0
+ [3568,]    85    86     0     0
+ [3569,]     0     0     0     0
+ [3570,]     0     0     0     0
+ [3571,]     0     0     0     0
+
+ [ reached getOption("max.print") -- omitted 56429 row(s) and 27 matrix slice(s) ]
+
+> summary(train_images)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00    0.00    0.00   72.94  163.00  255.00 
+> summary(train_labels)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    0.0     2.0     4.5     4.5     7.0     9.0 
+> summary(test_images)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00    0.00    1.00   73.15  163.00  255.00 
+> summary(test_labels)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    0.0     2.0     4.5     4.5     7.0     9.0 
+> 
+
+Digit	Class
+0	T-shirt/top
+1	Trouser
+2	Pullover
+3	Dress
+4	Coat
+5	Sandal
+6	Shirt
+7	Sneaker
+8	Bag
+9	Ankle boot
+
+TODO
+> library(tidyr)
+Error in library(tidyr) : there is no package called 'tidyr'
+> install.packages(tidyr)
+Error in install.packages(tidyr) : object 'tidyr' not found
+> library(ggplot2)
+\Error in library(ggplot2) : there is no package called 'ggplot2'
+
+https://tensorflow.rstudio.com/keras/articles/tutorial_basic_classification.html
+(r-tensorflow) user@b62128106f1a:~$ 
+user@b62128106f1a:~$ ls
+Rplots.pdf  bin  downloads  lib  simple_audio_classification  speech-keras  uploads
+user@b62128106f1a:~$ 
+user@b62128106f1a:~$ read escape sequence
+aimldl@GPU-Desktop:~$ docker ps
+CONTAINER ID        IMAGE                              COMMAND             CREATED             STATUS              PORTS                    NAMES
+3e426f8d580f        aimldl/python3_base_image:ver0.2   "/bin/bash"         8 days ago          Up 8 days           0.0.0.0:6000->6000/tcp   amazing_feistel
+b62128106f1a        aimldl/tensorflow_base_image       "/bin/bash"         6 weeks ago         Up 29 hours                                  optimistic_varahamihira
+aimldl@GPU-Desktop:~$ 
+
+

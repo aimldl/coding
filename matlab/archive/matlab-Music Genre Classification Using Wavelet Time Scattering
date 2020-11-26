@@ -1,0 +1,411 @@
+%
+% Music Genre Classification Using Wavelet Time Scattering, https://www.mathworks.com/help/wavelet/examples/music-genre-classification-using-wavelet-scattering.html
+
+
+
+# 2019-04-26 (Fri)
+
+
+% Prerequisite
+
+% Step 1. Download the GTZAN genre collection
+% http://opihi.cs.uvic.ca/sound/genres.tar.gz
+
+% $ sudo mv genres.tar.gz /tmp/
+% $ cd /tmp
+% /tmp$ sudo tar zxvf genres.tar.gz
+% /tmp$ cd genres/
+% /tmp/genres$ ls
+% blues  classical  country  disco  hiphop  jazz  metal  pop  reggae  rock
+
+% Step 2. Define supporting functions.
+%
+% Add the path where your missing function is to your Matlab working path. 
+
+
+%Caused by:
+%   Error using tall/cellfun (line 19)
+%    Undefined function 'helperscatfeatures' for input arguments of type 'waveletScattering'.
+
+%Error using tall/gather (line 50)
+%An undefined function error was thrown on the workers for 'helperscatfeatures'.  The file containing 'helperscatfeatures' might not
+%be available on the workers.  Specify the required files for this parallel pool using the command: addAttachedFiles(pool, ...).  See
+%the documentation for parpool for more details.
+%Learn more about errors encountered during GATHER.
+
+%Error in Music_Genre_Classification_Using_Wavelet_Time_Scattering (line 68)
+%TrainFeatures = gather(scatteringTrain);
+
+%Caused by:
+%   Error using tall/cellfun (line 19)
+%    Undefined function 'helperscatfeatures' for input arguments of type 'waveletScattering'.
+
+
+tutorial에 있는 내용을 그대로 입력하면 에러가 뜨는데 아래와 같이 고쳐줘야 합니다.
+"Appendix -- Supporting Functions"에 있는 함수를 인식할 수 있게 해야함.
+
+helperMajorityVote.m으로 저장
+function [ClassVotes,ClassCounts] = helperMajorityVote(predLabels,origLabels,classes)
+% This function is in support of wavelet scattering examples only. It may
+% change or be removed in a future release.
+
+% Make categorical arrays if the labels are not already categorical
+predLabels = categorical(predLabels);
+origLabels = categorical(origLabels);
+% Expects both predLabels and origLabels to be categorical vectors
+Npred = numel(predLabels);
+Norig = numel(origLabels);
+Nwin = Npred/Norig;
+predLabels = reshape(predLabels,Nwin,Norig);
+ClassCounts = countcats(predLabels);
+[mxcount,idx] = max(ClassCounts);
+ClassVotes = classes(idx);
+% Check for any ties in the maximum values and ensure they are marked as
+% error if the mode occurs more than once
+modecnt = modecount(ClassCounts,mxcount);
+ClassVotes(modecnt>1) = categorical({'NoUniqueMode'});
+ClassVotes = ClassVotes(:);
+
+%-------------------------------------------------------------------------
+function modecnt = modecount(ClassCounts,mxcount)
+        modecnt = Inf(size(ClassCounts,2),1);
+        for nc = 1:size(ClassCounts,2)
+            modecnt(nc) = histc(ClassCounts(:,nc),mxcount(nc));
+        end
+    end
+end
+
+helperscatfeatures.m으로 저장
+function features = helperscatfeatures(x,sf)
+% This function is in support of wavelet scattering examples only. It may
+% change or be removed in a future release.
+
+features = featureMatrix(sf,x(1:2^19),'Transform','log');
+features = features(:,1:8:end)';
+end
+
+
+## 문제: 
+Starting parallel pool (parpool) using the 'local' profile ...
+Connected to the parallel pool (number of workers: 4).
+Evaluating tall expression using the Parallel Pool 'local':
+- Pass 1 of 1: 0% complete
+Evaluation 0% complete
+Analyzing and transferring files to the workers ...done.
+Error using tall/gather (line 50)
+An undefined function error was thrown on the workers for 'helperscatfeatures'.  The file containing 'helperscatfeatures' might not
+be available on the workers.  Specify the required files for this parallel pool using the command: addAttachedFiles(pool, ...).  See
+the documentation for parpool for more details.
+Learn more about errors encountered during GATHER.
+
+Error in Music_Genre_Classification_Using_Wavelet_Time_Scattering (line 68)
+TrainFeatures = gather(scatteringTrain);
+
+Caused by:
+    Error using tall/cellfun (line 19)
+    Undefined function 'helperscatfeatures' for input arguments of type 'waveletScattering'.
+
+### 에러: 
+    Undefined function 'helperscatfeatures' for input arguments of type 'waveletScattering'.
+
+### 문제 해결:
+구글 검색: Undefined function 'helperscatfeatures' for input arguments of type 'waveletScattering'
+참고 문서: how to solve "Undefined function" problem?, https://www.mathworks.com/matlabcentral/answers/420548-how-to-solve-undefined-function-problem
+
+### 힌트:
+메뉴의 HOME > Set Path를 선택해서 .m파일을 저장한 PATH를 입력한다. 하는 방법은 아래를 참고.
+참고 문서: What Is the MATLAB Search Path?, https://www.mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html
+
+혹은 command line에서 아래와 같이 입력.
+
+addpath('C:\Folder_where_the_m_file_is')
+
+## 문제
+Evaluating tall expression using the Parallel Pool 'local':
+- Pass 1 of 1: Completed in 5 min 30 sec
+Evaluation completed in 5 min 30 sec
+Undefined function 'father' for input arguments of type 'tall'.
+
+Error in
+Music_Genre_Classification_Using_Wavelet_Time_Scattering (line
+88)
+TestFeatures = father(scatteringTest);
+
+### 원인 나도 모르는 사이에 오타가 나있었음.
+TestFeatures = gather(scatteringTest);
+
+도는 동안에는 아래처럼 나옴.
+- Pass 1 of 1: 33% complete
+Evaluation 33% complete
+
+
+## 문제
+Evaluating tall expression using the Parallel Pool 'local':
+- Pass 1 of 1: Completed in 5 min 25 sec
+Evaluation completed in 5 min 25 sec
+Evaluating tall expression using the Parallel Pool 'local':
+- Pass 1 of 1: Completed in 5 min 22 sec
+Evaluation completed in 5 min 22 sec
+Error using classreg.learning.modelparams.SVMParams.make (line
+250)
+'KernelScale' value must be a positive scalar, or 'auto'.
+
+Error in classreg.learning.FitTemplate/fillIfNeeded (line 655)
+                    this.MakeModelParams(this.Type,this.MakeModelInputArgs{:});
+
+Error in classreg.learning.FitTemplate.make (line 124)
+            temp = fillIfNeeded(temp,type);
+
+Error in templateSVM (line 177)
+temp =
+classreg.learning.FitTemplate.make('SVM','type','classification',varargin{:});
+
+Error in
+Music_Genre_Classification_Using_Wavelet_Time_Scattering (line
+106)
+template = templateSVM(...
+
+>> 
+
+## 해결: 단순한 오타였음.
+% Fit the SVM to the training data.
+template = templateSVM(...
+'kernelFunction', 'polynomial',...
+'PolynomialOrder',3,...
+'KernelScale','audo',...
+
+'KernelScale','auto',...
+
+## 결과
+Evaluation completed in 5 min 21 sec
+>> 
+다 돌았지만 아무 반응도 없다. 좀 기다렸더니 나옴.
+
+>> tempdir
+
+ans =
+
+    '/tmp/'
+
+>> location
+
+location =
+
+    '/tmp/genres'
+
+>> matlabroot
+
+ans =
+
+    '/usr/local/MATLAB/R2019a'
+
+>> pwd
+
+ans =
+
+    '/usr/local/MATLAB/R2019a/bin'
+
+>> matlabroot = '/home/aimldl/Dropbox/now/wavelet_transformation/m_files/music_genre_classification'
+
+matlabroot =
+
+    '/home/aimldl/Dropbox/now/wavelet_transformation/m_files/music_genre_classification'
+
+>> 
+
+# 2019-04-25 (Thu)
+
+% how to classify the genre of a musical excerpt
+Summary
+This example demonstrated the use of wavelet time scattering and the audio datastore in music genre classification. In this example, wavelet time scattering achieved an classification accuracy comparable to state of the art performance for the GTZAN dataset. As opposed to other approaches requiring the extraction of a number of time-domain and frequency-domain features, wavelet scattering only required the specification of a single parameter, the scale of the time invariant. The audio datastore enabled us to efficiently manage the transfer of a large dataset from disk into MATLAB and permitted us to randomize the data and accurately retain genre membership of the randomized data through the classification workflow.
+
+
+
+% Dataset = GTZAN Genre Collection [7][8]
+
+## Step 1. Download GTZAN dataset
+
+Download the GTZAN genre collection, http://opihi.cs.uvic.ca/sound/genres.tar.gz
+compressed 1.2GB, uncompressed 3GB
+
+[7] Tzanetakis, G. and Cook, P. 2002. Music genre classification of audio signals. IEEE Transactions on Speech and Audio Processing, Vol. 10, No. 5, pp. 293-302.
+[8] GTZAN Genre Collection. http://marsyas.info/downloads/datasets.html
+
+The dataset consists of 1000 audio tracks each 30 seconds long. It contains 10 genres, each represented by 100 tracks. The tracks are all 22050Hz Mono 16-bit audio files in .wav format.
+
+blues, classical, country, disco, hiphop, jazz, metal, pop, reggae, and rock
+
+In the original paper, the authors used a number of time-domain and frequency-domain features including mel-frequency cepstral (MFC) coefficients extracted from each music example and a Gaussian mixture model (GMM) classification to achieve an accuracy of 61 percent [7].
+
+Subsequently, deep learning networks have been applied to this data. In most cases, these deep learning approaches consist of convolutional neural networks (CNN) with the MFC coefficients or spectrograms as the input to the deep CNN. These approaches have resulted in performance of around 84% [4]. An LSTM approach with spectrogram time slices resulted in 79% accuracy and time-domain and frequency-domain features coupled with an ensemble learning approach (AdaBoost) resulted in 82% accuracy on a test set [2][3]. Recently, a sparse representation machine learning approach achieved approximately 89% accuracy [6].
+
+location = fullfile(tempdir,'genres');
+ads = audioDatastore( location, 'IncludeSubFolders', true, ...
+'LabelSource','foldernames');
+% Verify the number of data for each class or label
+countEachLabel(ads)
+
+%'audioDatastore' requires Audio Toolbox.
+% Cannot find files or folders matching: '/tmp/genres'.
+
+'LabelSource' property to 'foldernames' to create data labels based on the subfolder names. This example assumes the top-level directory is inside your MATLAB tempdir directory and is called 'genres'. Ensure that location is the correct path to the top-level data folder on your machine. 
+The top-level data folder on your machine should contain ten subfolders each named for the ten genres and must only contain audio files corresponding to those genres.
+
+## Training and Test Datasets
+GTZAN datasets -> 80:20=training:test
+shuffles the data randomly.
+
+rng(100);
+ads = shuffle(ads);
+[adsTrain,adsTest] = splitEachLabel(ads,0.8);
+% Verify the number of data for each class or label
+countEachLabel(adsTrain);
+countEachLabel(adsTest);
+
+% Create tall arrays of the data
+Ttrain = tall(adsTrain);
+Ttest = tall(adsTrain);
+
+TODO: Start from
+scatteringTrain = cellfun(@(x)helperscatfeatures(x,sf),Ttrain,'UniformOutput',false);
+
+% Wavelet Scattering Framework
+Three parameters to tweak
+(1) the duration of the time invariance, 
+(2) the number of wavelet filter banks, 
+(3) the number of wavelets per octave
+
+sf = waveletScattering('SignalLength',2^19, 'SamplingFrequency',22050,...
+'InvarianceScale',0.5);
+[fb,f,filterparams] = filterbank(sf);
+phi = ifftshift(ifft(fb{1}.phift));
+psiL1 = ifftshift(ifft(fb{2}.psift(:,end)));
+dt = 1/22050;
+time = -2^18*dt:dt:2^18*dt-dt;
+scalplt = plot(time,phi,'linewidth',1.5);
+hold on
+grid on
+ylimits = [-3e-4 3e-4];
+ylim(ylimits);
+plot([-0.25 -0.25],ylimits,'k--');
+plot([0.25 0.25],ylimits,'k--');
+xlim([-0.6 0.6]);
+xlabel('Seconds'); ylabel('Amplitude');
+wavplt = plot(time,[real(psiL1) imag(psiL1)]);
+legend([scalplt wavplt(1) wavplt(2)], {'Scaling Function', 'Wavelet-Real Part', 'Wavelet-Imaginary Part'})
+title({'Scaling Function'; 'Coarsest-Scale Wavelet First Filter Bank'})
+hold off
+
+% Compute the wavelet scattering features for both the training and test data
+scatteringTrain = cellfun(@(x)helperscatfeatures(x,sf),Ttrain,'UniformOutput',false);
+scatteringTest = cellfun(@(x)helperscatfeatures(x,sf),Ttest,'UniformOutput',false);
+
+% Bundle all the features together in a matrix
+TrainFeatures = gather(scatteringTrain);
+TrainFeatures = cell2mat(TrainFeatures);
+
+TestFeatures = father(scatteringTest);
+TestFeatures = cell2mat(TestFeatures);
+
+numTimeWindows = 32;
+
+trainLabels = adsTrain.Labels;
+numTrainSignals = numel(trainLabels);
+trainLabels = repmat(trainLabels,1,numTimeWindows);
+trainLabels = reshape(trainLabels',numTrainSignals*numTimeWindows,1);
+
+testLabels = adsTest.Labels;
+numTestSignals = numel(testLabels);
+testLabels = repmat(testLabels,1,numTimeWindows);
+testLabels = reshape(testLabels',numTestSignals*numTimeWindows,1);
+
+feature matrix 25600x341
+
+Each row = one scattering time window across the 341 paths in the scattering transform of each audio
+25,600 windows(?) = 800 audio files x 32 time windows
+
+Each column = 341 paths in the scattering transform
+
+Each row of TrainFeatures and TestFeatures is one scattering time window across the 341 paths in the scattering transform of each audio signal. For each music sample, we have 32 such time windows. Accordingly, the feature matrix for the training data is 25600-by-341. The number of rows is equal to the number of training examples (800) multiplied by the number of scattering windows per example (32). Similarly, the scattering feature matrix for the test data is 6400-by-341. There are 200 test examples and 32 windows per example. Create a genre label for each of the 32 windows in the wavelet scattering feature matrix for the training data.
+
+% Use a multi-class se SVM (Support Vector Machine) classifier with a cubic polynomial kernel.
+
+% Fit the SVM to the training data.
+template = templateSVM(...
+'kernelFunction', 'polynomial',...
+'PolynomialOrder',3,...
+'KernelScale','audo',...
+'BoxConstraint',1,...
+'Standardize',true);
+Classes = {'blues','classical','country','disco','hiphop','jazz',...
+'metal','pop','reggae','rock'};
+classificationSVM = fitcecoc(...
+TrainFeatures,...
+trainLabels,...
+'Learners',template,...
+'Coding','onevsone','ClassNames',categorical(Classes));
+
+% Predicting from the test dataset
+% Recall 32 time windows for each signal is used.
+% Use a simple majority vote to predict the genre.
+predLabels = predict(classificationSVM,TestFeatures);
+[TestVotes,TestCounts] = helperMajorityVote(predLabels,adsTest.Labels,categorical(Classes));
+testAccuracy = sum( eq(TestVotes,adsTest.Labels) ) / numTestSignals*100;
+
+% Plot confusion matrix to see the accuracy.
+confusionchart(TestVotes,adsTest.Labels);
+
+cm =confusionmat(TestVotes,adsTest.Labels);
+cm(:,end) = [];
+genreAccuracy = diag(cm)./20*100;
+
+figure;
+bar(genreAccuracy)
+set(gca, 'XTickLabels',Classes);
+xtickangle(gca,30);
+title('Percentage Correct by Genre - Test Set');
+
+
+Appendix -- Supporting Functions
+helperMajorityVote -- This function returns the mode of the class labels predicted over a number of feature vectors. In wavelet time scattering, we obtain a class label for each time window. If no unique mode is found a label of 'NoUniqueMode' is returned to denote a classification error.
+
+function [ClassVotes,ClassCounts] = helperMajorityVote(predLabels,origLabels,classes)
+% This function is in support of wavelet scattering examples only. It may
+% change or be removed in a future release.
+
+% Make categorical arrays if the labels are not already categorical
+predLabels = categorical(predLabels);
+origLabels = categorical(origLabels);
+% Expects both predLabels and origLabels to be categorical vectors
+Npred = numel(predLabels);
+Norig = numel(origLabels);
+Nwin = Npred/Norig;
+predLabels = reshape(predLabels,Nwin,Norig);
+ClassCounts = countcats(predLabels);
+[mxcount,idx] = max(ClassCounts);
+ClassVotes = classes(idx);
+% Check for any ties in the maximum values and ensure they are marked as
+% error if the mode occurs more than once
+modecnt = modecount(ClassCounts,mxcount);
+ClassVotes(modecnt>1) = categorical({'NoUniqueMode'});
+ClassVotes = ClassVotes(:);
+
+%-------------------------------------------------------------------------
+function modecnt = modecount(ClassCounts,mxcount)
+        modecnt = Inf(size(ClassCounts,2),1);
+        for nc = 1:size(ClassCounts,2)
+            modecnt(nc) = histc(ClassCounts(:,nc),mxcount(nc));
+        end
+    end
+end
+
+helperscatfeatures - This function returns the wavelet time scattering feature matrix for a given input signal. In this case, we use the natural logarithm of the wavelet scattering coefficients. The scattering feature matrix is computed on 2^19 samples of a signal. The scattering features are subsampled by a factor of 8.
+
+function features = helperscatfeatures(x,sf)
+% This function is in support of wavelet scattering examples only. It may
+% change or be removed in a future release.
+
+features = featureMatrix(sf,x(1:2^19),'Transform','log');
+features = features(:,1:8:end)';
+end
+
