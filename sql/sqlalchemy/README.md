@@ -4,12 +4,7 @@
 
 * Source: 깔끔한 파이썬 탄탄한 백엔드, 6장 데이터베이스, pp.154-155, 송은우 지음
 
-## Install SQLAlchemy
 
-```bash
-$ pip install sqlalchemy
-$ pip install mysql-connector-python
-```
 
 ## Sample Python Code
 
