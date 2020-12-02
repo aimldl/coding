@@ -1,7 +1,7 @@
 * Draft: 2020-12-02 (Wed)
 # 코딩 테스트 준비에 관한 메모
 
-[코딩테스트 단 한번에 통과하는 3가지 방법](https://youtu.be/BHEVExiUFgU)
+[코딩테스트 단 한번에 통과하는 3가지 방법](https://youtu.be/BHEVExiUFgU), Youtube, [2:02]
 > 1. 기초 다지기
 > [코드업 문제집 기초 100제](https://codeup.kr/problemsetsol.php?psid=23)
 > 
