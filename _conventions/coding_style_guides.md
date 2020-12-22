@@ -18,7 +18,7 @@
 ## 파이썬 스타일 가이드
 자세한 내용은 [파이썬 (doc) 스타일 가이드에 대한 정리](https://medium.com/@kkweon/%ED%8C%8C%EC%9D%B4%EC%8D%AC-doc-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9C%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC-b6d27cd0a27c)을 참고하세요.
 
-### [PEP8]((https://www.python.org/dev/peps/pep-0008/)
+### [PEP8](https://www.python.org/dev/peps/pep-0008/)
 - 모든 스타일 가이드의 기초
 - Guido van Rossum (파이썬 창시자)가 작성
 - “Readability is everything”이라는 파이썬 철학이 담김
