@@ -1,6 +1,6 @@
 * Draft: 2020-12-22 (Tue)
 
-# 파이썬 코딩 스타일 가이드(Python Coding Style Guides)
+# 코딩 스타일 가이드(Coding Style Guides)
 ## 왜 스타일 가이드가 필요한가?
 코딩 스타일 가이드는 코드의 가독성을 높이기 위해서 필요합니다.
 
