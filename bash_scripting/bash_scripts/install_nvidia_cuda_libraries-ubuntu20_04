@@ -38,8 +38,7 @@ echo "
 Take the following post-installation actions.
 Take a note of the following part.
 
-$ ls /usr/local/ | grep "cuda-"
-$ ls /usr/local/
+$ $ ls /usr/local/ | grep "cuda-..\.."
 
 Add the PATH variable at the end of \`.bashrc\`
 $ echo 'export PATH=/usr/local/cuda-11.0/bin\${PATH:+:\${PATH}}' >> ~/.bashrc
@@ -60,7 +59,7 @@ while true; do
     echo $REPLY
 
     case $REPLY in
-        [Yy]* ) echo 'Rebooting...'; break;; #reboot; 
+        [Yy]* ) echo 'Rebooting...'; reboot; break;;
         [Nn]* ) echo 'Exiting...'; exit;;
         * ) echo 'Please answer y or n.';;
     esac
