@@ -1,0 +1,67 @@
+#!/bin/bash
+# install_nvidia_cuda_libraries-ubuntu20_04
+#   * Draft: 2021-01-08 (Thu)
+#
+#   This script is documented and explained at
+#   https://github.com/aimldl/environments/blob/master/gpgpu/install/nvidia_cuda_toolkit-ubuntu20_04.md
+
+# Pre-installation actions
+lspci | grep -i nvidia
+uname -m && cat /etc/*release
+gcc --version
+
+# Update, upgrade the system and install dependencies
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt install -y build-essential
+sudo apt-get install -y python-dev python3-dev python-pip python3-pip
+
+# Clean the existing NVIDIA driver.
+# TODO: include -y to remove automatically
+sudo apt-get purge nvidia* -y 
+sudo apt-get autoremove -y
+sudo apt-get autoclean -y
+sudo rm -rf /usr/local/cuda*
+
+# Install the latest NVIDIA CUDA
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/11.2.0/local_installers/cuda-repo-ubuntu2004-11-2-local_11.2.0-460.27.04-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2004-11-2-local_11.2.0-460.27.04-1_amd64.deb
+sudo apt-key add /var/cuda-repo-ubuntu2004-11-2-local/7fa2af80.pub
+sudo apt-get update -y
+sudo apt-get -y install cuda
+
+
+# Post-installation actions
+echo "
+
+Take the following post-installation actions.
+Take a note of the following part.
+
+$ ls /usr/local/ | grep "cuda-"
+$ ls /usr/local/
+
+Add the PATH variable at the end of \`.bashrc\`
+$ echo 'export PATH=/usr/local/cuda-11.0/bin\${PATH:+:\${PATH}}' >> ~/.bashrc
+$ echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64\${LD_LIBRARY_PATH:+:\${LD_LIBRARY_PATH}}' >> ~/.bashrc
+
+# Reload the bash
+$ source ~/.bashrc
+
+# Check 
+$ sudo ldconfig
+$ nvidia-smi
+$ echo \$PATH
+"
+
+# Reboot the system
+while true; do
+    read -p 'Reboot? (y/n): ' REPLY
+    echo $REPLY
+
+    case $REPLY in
+        [Yy]* ) echo 'Rebooting...'; break;; #reboot; 
+        [Nn]* ) echo 'Exiting...'; exit;;
+        * ) echo 'Please answer y or n.';;
+    esac
+done

@@ -1,0 +1,16 @@
+#!/bin/bash
+# ask_whether_or_not_to_reboot
+#   * Draft: 2021-01-08 (Thu)
+#
+#   https://stackoverflow.com/questions/226703/how-do-i-prompt-for-yes-no-cancel-input-in-a-linux-shell-script/27875395
+
+while true; do
+    read -p 'Reboot? (y/n): ' REPLY
+    echo $REPLY
+
+    case $REPLY in
+        [Yy]* ) echo 'Rebooting...'; break;; #reboot; 
+        [Nn]* ) echo 'Exiting...'; exit;;
+        * ) echo 'Please answer y or n.';;
+    esac
+done
