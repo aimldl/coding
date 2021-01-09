@@ -175,6 +175,43 @@ coding
     └── troubleshoot
 ```
 
+## 적용예
+
+```bash
+$ cd ~/github/tools
+$ chmod +x mksubdirs
+$ ./mksubdirs en
+atom/
+audacity/
+automl/
+dropbox/
+ganttproject/
+gimp/
+git/
+gomcam/
+google_drive/
+icanotes/
+jupyter/
+master_pdf_editor/
+mecab-ipadic-neologd/
+meld/
+notepad++/
+openshot/
+oven/
+pigeonhole/
+projectlibre/
+putty/
+shotcut/
+spyder/
+sublime_text/
+toggl/
+typora/
+vlc/
+xmind/
+zoom/
+$
+```
+
 
 
 ## 코드
