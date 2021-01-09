@@ -2,9 +2,11 @@
 # mksubdirs
 #   * Draft: 2021-01-09 (Sat)
 #
-#   make a sub-directory for all (immediate) sub-directories
-#   Usage:
-#     $ mksubdirs new_directory_name
+# make a sub-directory for all (immediate) sub-directories
+# Usage:
+#   $ mksubdirs new_directory_name
+# For details, refer to
+#   https://github.com/aimldl/coding/blob/main/bash_scripting/bash_scripts/mksubdirs
 
 NEW_DIRECTORY_NAME=$1
 CURRENT_DIRECTORY=`pwd`
