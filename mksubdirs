@@ -1,0 +1,18 @@
+#!/bin/bash
+# mksubdirs
+#   * Draft: 2021-01-09 (Sat)
+#
+#   make a directory in all (immediate) sub-directories
+#   Usage:
+#     $ mksubdirs new_directory_name
+
+NEW_DIRECTORY_NAME=$1
+CURRENT_DIRECTORY=`pwd`
+
+SUB_DIRECTORIES=`ls -d */`
+for SUB_DIRECTORY in $SUB_DIRECTORIES; do
+  printf "$SUB_DIRECTORY\n"
+  cd $SUB_DIRECTORY
+  mkdir -p $NEW_DIRECTORY_NAME
+  cd $CURRENT_DIRECTORY
+done
