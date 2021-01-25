@@ -1,9 +1,9 @@
+* Rev.1: 2021-01-25 (Mon)
 * Draft: 2020-07-16 (Thu)
 
-## Ask Yes or No
+# Ask Yes or No
 
-An example to reinstall Docker is below.
-
+## Example: Reinstall Docker?
 This function is without the `while` loop.
 
 ```bash
@@ -29,6 +29,35 @@ ask_to_reinstall() {
     esac
   done
 }
+```
+## Example: Reboot?
+```bash
+# Define function(s)
+run() {
+  COMMAND=$1
+  echo $COMMAND
+  eval $COMMAND
+}
+
+show_suggestions_after_reboot() {
+  echo 'After rebooting the system, run:'
+  echo '  $ nvidia-smi'
+}
+
+ask_to_reboot() {
+  while true; do
+    show_suggestions_after_reboot
+    read -p "Reboot? (y/n)" REPLY
+    case $REPLY in
+      [Yy]* ) run 'reboot'; ;;
+      [Nn]* ) echo "Exiting..."; exit 1; ;;
+      * ) echo "Enter either yes or no." ;;
+    esac
+  done
+}
+
+# Run the defined function ask_to_reboot
+ask_to_reboot
 ```
 
 ## References
