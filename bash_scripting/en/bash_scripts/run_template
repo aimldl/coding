@@ -1,0 +1,9 @@
+#!/bin/bash
+# run_template
+
+# Define function(s)
+run() {
+  COMMAND=$1
+  echo $COMMAND
+  eval $COMMAND
+}
