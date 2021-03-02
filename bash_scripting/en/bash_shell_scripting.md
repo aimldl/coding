@@ -171,6 +171,10 @@ Note space between `"$DIRECTORY"` and `]` is a must. Without it, the following e
 line n: [: missing `]'
 ```
 
+The above commands can be used in a function as follows.
+
+
+```bash
 safe_mkdir() {
   # Make a directory if it doesn't exist.
   DIRECTORY=$1
@@ -178,6 +182,27 @@ safe_mkdir() {
     mkdir -p $DIRECTORY
   fi
 }
+```
+
+Usage
+```bash
+safe_mkdir '../logs'
+```
+
+```bash
+safe_cd() {
+  DIRECTORY=$1
+  if [ ! -d $DIRECTORY ]; then
+    mkdir $DIRECTORY
+  fi
+  run "cd $DIRECTORY"
+}
+```
+Usage
+```bash
+safe_cd '../downloads'
+```
+
 
 ##### Check if Multiple Files Exist 
 
