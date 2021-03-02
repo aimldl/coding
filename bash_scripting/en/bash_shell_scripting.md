@@ -1,4 +1,3 @@
-##### aimldl > computing_environments > bash > bash_shell_scripting.md
 
 * Rev.2: 2020-04-24 (Fri)
 * Rev.1: 2020-01-07 (Tue)
@@ -146,17 +145,39 @@ fi
 [ ! -f /etc/docker ] && echo "$FILE does not exist"
 ```
 
-##### Check if Directory Exist 
+##### Check if a directory exists
 
 ```bash
-if [ -d "$FILE" ]; then
-    echo "$FILE is a directory"
+if [ -d "$DIRECTORY" ]; then
+    echo "$DIRECTORY does exist"
 fi
 ```
 
 ```bash
-[ -d /etc/docker ] && echo "$FILE is a directory"
+[ -d "$DIRECTORY" ] && echo "$DIRECTORY does exist"
 ```
+
+##### Check if a directory doesn't exist 
+
+```bash
+if [ ! -d "$DIRECTORY" ]; then
+    echo "$DIRECTORY does not exist"
+fi
+```
+
+Note space between `"$DIRECTORY"` and `]` is a must. Without it, the following error occurs.
+
+```bash
+line n: [: missing `]'
+```
+
+safe_mkdir() {
+  # Make a directory if it doesn't exist.
+  DIRECTORY=$1
+  if [ ! -d "$DIRECTORY" ]; then
+    mkdir -p $DIRECTORY
+  fi
+}
 
 ##### Check if Multiple Files Exist 
 
