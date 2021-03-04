@@ -18,7 +18,7 @@ To embed the plot in a Jupyter Notebook, add:
 
 ### Local environment
 * Install [Anaconda](https://www.anaconda.com/) and Matplotlib comes automatically with Anaconda.
-* For details, refer to [Installation](INSTALL.md)
+* For details, refer to [Install Matplotlib](INSTALL.md)
 
 ## 3. Examples
 Refer to [Examples](https://matplotlib.org/gallery/index.html) to see what's possible with matplotlib.
