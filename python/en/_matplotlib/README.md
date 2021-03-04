@@ -27,7 +27,7 @@ Refer to [Examples](https://matplotlib.org/gallery/index.html) to see what's pos
 I have selected several useful examples in [Summary of Matplotlib Gallery](gallery/summary-matplotlib-gallery.md) and added brief comments if necessary.
 
 ## 1.3. Selected Python Code Examples
-matplotlib must be imported to use it. To plot [Simple Plot Example](https://github.com/aimldl/python3/tree/master/packages/matplotlib/gallery/lines_bars_and_markers#simple_plot), 
+matplotlib must be imported to use it. To plot [Simple Plot Example](gallery/lines_bars_and_markers#simple_plot), 
 <img src="https://matplotlib.org/_images/sphx_glr_simple_plot_001.png" width="450" height="300"/>
 
 ```python
