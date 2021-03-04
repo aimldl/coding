@@ -24,7 +24,7 @@ To install Anaconda, refer to [Installation in Anaconda Documentation](https://d
 Refer to [Examples](https://matplotlib.org/gallery/index.html) to see what's possible with matplotlib.
 > This gallery contains examples of the many things you can do with Matplotlib.
 
-I have selected several useful examples in [Summary of Matplotlib Gallery](https://github.com/aimldl/python3/tree/master/packages/matplotlib/gallery) and added brief comments if necessary.
+I have selected several useful examples in [Summary of Matplotlib Gallery](gallery/summary-matplotlib-gallery.md) and added brief comments if necessary.
 
 ## 1.3. Selected Python Code Examples
 matplotlib must be imported to use it. To plot [Simple Plot Example](https://github.com/aimldl/python3/tree/master/packages/matplotlib/gallery/lines_bars_and_markers#simple_plot), 
