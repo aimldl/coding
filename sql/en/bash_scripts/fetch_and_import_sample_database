@@ -1,0 +1,14 @@
+#!/bin/bash
+
+* Draft: 2021-04-05 (Mon)
+# fetch_and_import_sample_database
+#### Download source.zip from https://download.hanbit.co.kr/exam/2231/
+#### The link is from a book "SQL 첫걸음"
+
+mkdir -p downloads
+cd downloads/
+wget https://download.hanbit.co.kr/exam/2231/source.zip
+unzip source.zip
+sudo mysql -uroot -p < sample.dump
+
+# You must enter the password

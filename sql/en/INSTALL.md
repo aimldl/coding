@@ -4,16 +4,48 @@
 * Draft: 2019-10-24 (Thu)
 
 # Prepare the Computing Environment for MySQL
-* Refer to [Getting Started with MySQL](https://dev.mysql.com/doc/mysql-getting-started/en/) to set up the MySQL computing environment.
-* This document explains:
-  * Installing and Starting MySQL
-  * Connecting to the MySQL Server with the mysql Client
-  * Some Basic Operations with MySQL
-  * Other Important Tasks to Perform
-  * Troubleshooting
-  * Other Helpful Resources
-  
-[Ubuntu 18.04에 MySQL 설치하기](https://blog.naver.com/aimldl/221688199728) explains how to install MySQL on Ubuntu 18.04 in Korean.
+
+## Summary
+
+To install MySQL on Ubuntu Linux (18.04), run the following commands.
+
+```bash
+sudo apt update
+sudo apt install -y mysql-server
+sudo mysql_secure_installation
+sudo mysqladmin -p -u root version
+```
+
+To verify the installation, run:
+
+```bash
+$ sudo mysqladmin -p -u root version
+```
+
+To check the status, run either:
+
+```bash
+$ systemctl status mysql.service
+# or
+$ service mysql status
+```
+
+If `mysql` does not start automatically, run manually:
+
+```bash
+$ service mysql start
+```
+
+To stop `mysql` manually, run:
+
+```bash
+$ service mysql stop
+```
+
+### References
+
+* [Getting Started with MySQL](https://dev.mysql.com/doc/mysql-getting-started/en/)
+* [Ubuntu 18.04에 MySQL 설치하기](https://blog.naver.com/aimldl/221688199728) (Korean)
 
 ## Step 1. Install MySQL Community Server
 MySQL Community Server is a freely downloadable version of MySQL.
@@ -133,20 +165,6 @@ $
 ```
 
 ### Step 4. Verify if MySQL is Up & Running
-If these commands run without an error, the MySQL server is up & running.
-* `$ systemctl status mysql.service` or equivalently `$ service mysql status`
-* `$ sudo mysqladmin -p -u root version`
-
-After the installation, `mysql` runs automatically. If not, start `mysql` manually.
-```bash
-$ service mysql start
-```
-
-To stop mysql manually, run:
-```bash
-$ service mysql stop
-```
-
 #### To check the status of the MySQL server, run:
 ```bash
 $ systemctl status mysql.service
