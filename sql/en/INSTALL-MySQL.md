@@ -38,7 +38,7 @@ $ service mysql start
 
 To stop `mysql` manually, run:
 
-```bash
+```not, start 
 $ service mysql stop
 ```
 
@@ -91,7 +91,7 @@ New password:
 
 Re-enter new password: 
 By default, a MySQL installation has an anonymous user,
-allowing anyone to log into MySQL without having to have
+allowing anyone to log into MySQL without having to havenot, start 
 a user account created for them. This is intended only for
 testing, and to make the installation go a bit smoother.
 You should remove them before moving into a production
@@ -128,7 +128,7 @@ n
  ... skipping.
 Reloading the privilege tables will ensure that all changes
 made so far will take effect immediately.
-
+not, start 
 Reload privilege tables now? (Press y|Y for Yes, any other key for No) :
 ```
 y

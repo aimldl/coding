@@ -1,6 +1,6 @@
 * Draft: 2021-04-05 (Mon)
 
-# Quick Start Guide
+# Quick Start Guide for MySQL
 
 ## Summary
 
