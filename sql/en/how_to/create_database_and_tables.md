@@ -1,3 +1,4 @@
+* Rev.1: 2021-04-14 (Wed)
 * Draft: 2020-09-22 (Tue)
 
 # How to Create a Database and Tables
@@ -37,13 +38,15 @@ $
 
 ## Create a database
 
+[SQL CREATE TABLE Statement](https://www.w3schools.com/sql/sql_create_table.asp), [SQL PRIMARY KEY Constraint](https://www.w3schools.com/sql/sql_primarykey.ASP)
+
 `CREATE DATABASE` command creates a database. Say you want to create a `miniter` database
 
 ```mysql
 mysql> CREATE DATABASE miniter;
 Query OK, 1 row affected (0.00 sec)
 
-mysql>
+mysql>https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/bcb15507f4b52991a0783013df4222240e942381.pdf
 ```
 
 To check the create database, run:
@@ -89,7 +92,7 @@ CREATE TABLE table_name (
 )
 ```
 
-### Example
+### Example1
 
 #### `users` table
 
@@ -175,7 +178,7 @@ mysql> EXPLAIN users;
 | updated_at      | timestamp     | YES  |     | NULL              | on update CURRENT_TIMESTAMP |
 +-----------------+---------------+------+-----+-------------------+-----------------------------+
 7 rows in set (0.00 sec)
-
+https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/bcb15507f4b52991a0783013df4222240e942381.pdf
 mysql> 
 ```
 
