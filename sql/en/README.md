@@ -18,3 +18,13 @@
 Source: [SQL Commands](https://www.javatpoint.com/dbms-sql-command)
 
 <img src='images/sql-commands.png'>
+
+
+
+## RDBMS (Relational Database  Management System)
+
+### Open-source RDBMSs
+
+* https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems
+
+* https://www.digitalocean.com/community/tutorials/understanding-sql-and-nosql-databases-and-different-database-models
