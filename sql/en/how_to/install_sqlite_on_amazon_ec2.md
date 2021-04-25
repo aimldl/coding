@@ -1,6 +1,6 @@
 * Draft: 2021-04-07 (Wed)
 
-# How to Configure Specific Versions of SQLite on Amazon EC2
+# How to Install SQLite on Amazon EC2
 In this document, the target is to install SQLite, but Python and Numpy are also installed as a bonus.
 
 ## Target versions
