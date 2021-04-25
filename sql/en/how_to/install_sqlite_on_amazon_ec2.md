@@ -3,6 +3,8 @@
 # How to Install SQLite on Amazon EC2
 In this document, the target is to install SQLite, but Python and Numpy are also installed as a bonus.
 
+References: [How To Install and Use SQLite on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-sqlite-on-ubuntu-20-04)
+
 ## Target versions
 Say the target is to set up an environment with the following versions:
 - Python 3.6.5
