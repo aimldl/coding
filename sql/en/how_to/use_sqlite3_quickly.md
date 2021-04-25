@@ -1,6 +1,6 @@
 * Draft: 2021-04-07 (Wed)
 
-# How to Use SQLite3 Quickly.
+# How to Use SQLite3 Quickly
 
 The commands are equivalent up to “Step 6 — Deleting Information in SQLite”. 
 After this part, the commands are slightly modified.
