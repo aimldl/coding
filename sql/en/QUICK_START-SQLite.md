@@ -1,6 +1,6 @@
 * Draft: 2021-04-06 (Tue)
 
-## Quick Start Guide for SQLite
+# Quick Start Guide for SQLite
 
 ## Prerequisite
 
@@ -62,3 +62,13 @@ sqlite> INSERT INTO sharks VALUES (3, "Himari", "Megaladon", 1800);
 sqlite> SELECT * FROM sharks;
 ```
 
+## Next
+The following three articles are basics
+1. [How to Install SQLite on Amazon EC2](how_to/install_sqlite_on_amazon_ec2.md)
+2. [How to Use SQLite3 Quickly](how_to/use_sqlite3_quickly.md)
+3. [How to Use SQLite3 in Python 3](how_to/use_sqlite3_in_python3.md)
+
+from
+* [How To Install and Use SQLite on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-sqlite-on-ubuntu-20-04)
+* [How To Use the sqlite3 Module in Python 3](https://www.digitalocean.com/community/tutorials/how-to-use-the-sqlite3-module-in-python-3), 2020-06-02, DavidMuller\
+* [SQLite vs MySQL vs PostgreSQL: A Comparison Of Relational Database Management Systems](https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems)
