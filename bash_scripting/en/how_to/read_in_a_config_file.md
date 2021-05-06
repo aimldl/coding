@@ -7,10 +7,11 @@ Google search: file
 Basically, source a file into the Bash script
 
 > '''bash
-> #! /bin/bash
-> # Optionally, set default values
-> # var1="default value for var1"
-> # var1="default value for var2"
+> 
+> \#! /bin/bash
+> \# Optionally, set default values
+> \# var1="default value for var1"
+> \# var1="default value for var2"
 > . /path/to/some.config
 > echo "$var1" "$var2"
 > ```
