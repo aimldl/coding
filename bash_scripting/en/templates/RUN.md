@@ -8,11 +8,11 @@
 ## Function Definitions
 run() {
   COMMAND=$1
-  echo $COMMAND
-  eval $COMMAND
+  echo "${COMMAND}"
+  eval "${COMMAND}"
 }
 
 COMMAND="ls"
-run ""$COMMAND"
+run "$COMMAND"
 ```
 
