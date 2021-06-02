@@ -13,6 +13,6 @@ run() {
 }
 
 COMMAND="ls"
-run "$COMMAND"
+run "${COMMAND}"
 ```
 

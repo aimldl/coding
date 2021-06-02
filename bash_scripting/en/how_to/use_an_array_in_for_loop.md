@@ -6,8 +6,6 @@
 
 `for`루프에서 가독성이 좋은 코드를 만들기 위해 `array`를 쓰고자 합니다.
 
-
-
 ## Bash Script: array
 
 Google search: bash script array
