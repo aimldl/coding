@@ -1,0 +1,39 @@
+#############################
+#  A Safe "delete" Command  #
+#############################
+# Disable the rm command and define a safe "delete" command.
+# The delete command forcefully moves all specified files to directory .trash.
+# Directory .trash works exactly same as Ubuntu GUI's "Trash" and Windows "Trash".
+#
+# Caution: Empty the .trash directory every now and then.
+# TODO:
+#   Create a house-keeping function to delete all trash files more than 30 days old.
+#   The house-keeping function might also monitor how large the trash directory is getting.
+#   If too many files are being stored, perhaps some need to be deleted to free up disk space.
+# Source: pp.492~495, Unix Shell Programming Tools, David Medinets, McGraw-Hill
+
+# Create a rm function that does nothing.
+# This should help users keep out of mischief.
+rm () {
+  echo "Please use the delete command."
+}
+
+delete () {
+  # Create directory ~/.trash if it doesn't exist.
+  if [ ! -d ~/.trash ]; then
+    mkdir ~/.trash
+  fi
+
+  if [ $# eq 0 ]; then
+    # Warning message if there is no input argument.
+    echo "Please specify a filename to delete."
+  else
+    echo "You are about to delete these files: $@"
+    echo -n "Are you sure about this? Enter 'y' for yes."
+    read
+    # If 'y', force to move all the files to directory .trash.
+    if [ "$REPLY" = "y" ]; then
+      mv --force $@ ~/.trash
+    fi
+  fi
+}
