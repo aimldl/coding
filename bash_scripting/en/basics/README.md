@@ -1,4 +1,4 @@
-
+* Rev.4: 2022-04-12 (Thu)
 * Rev.3: 2022-04-07 (Thu)
 * Rev.2: 2020-04-24 (Fri)
 * Rev.1: 2020-01-07 (Tue)
@@ -220,4 +220,6 @@ if [[ -f /etc/resolv.conf && -f /etc/hosts ]]; then
     echo "Both files exist."
 fi
 ```
+
+##### [How to Check if Command Exists](https://github.com/aimldl/coding/blob/main/bash_scripting/en/how_to/check_if_command_exists.md)
 
