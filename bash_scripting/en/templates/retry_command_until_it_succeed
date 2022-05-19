@@ -1,0 +1,28 @@
+#!/bin/bash
+# provision_tpu_resource
+#   To run,
+#     $ chmod +x provision_tpu_resource
+#     $ ./provision_tpu_resource
+#     will retry to run the command every ”10” seconds. Hit Ctrl+C to quit. 
+#
+#     gcloud compute tpus create v3-1024 --zone=us-east1-d --version=2.6.0 --accelerator-type=v3-1024 --preemptible
+#       ...
+#     (until it suceeds)
+# Reference:
+#   Google search: bash retry command until success
+#   * How to repeat a Linux command until it succeeds
+#     https://www.networkworld.com/article/3541298/how-to-repeat-a-linux-command-until-it-succeeds.html
+
+INTERVAL=10
+#COMMAND="ls"
+COMMAND="gcloud compute tpus create v3-1024 --zone=us-east1-d --version=2.6.0 --accelerator-type=v3-1024 --preemptible"
+
+echo "will retry to run the command every ${INTERVAL} seconds. Hit Ctrl+C to quit. "
+echo ""
+
+# Main
+echo "${COMMAND}"
+while ! ${COMMAND}; do
+   sleep $INTERVAL
+   echo "${COMMAND}"
+done
